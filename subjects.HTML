@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subjects Table</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Montserrat", sans-serif;
+        }
+
+        body {
+            background-color:gray;  
+        }
+
+        .header-bar {
+            background-color:red;
+            height: 50px;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 20px;
+            color: white;
+            font-size: 18px;
+            font-weight: bold;
+            position: relative;
+        }
+
+        .exit-button {
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 20px;
+            color: white;
+            cursor: pointer;
+            opacity: 0.7;
+            transition: opacity 0.3s ease;
+        }
+
+        .exit-button:hover {
+            opacity: 1; 
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1000px;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: black;
+            margin: 30px auto;
+        }
+
+        .section-filter {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .section-filter label {
+            font-size: 14px;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        .dropdown-box {
+            background:rgb(221, 219, 219);
+            padding: 8px 12px;
+            border-radius: 4px;
+            font-size: 14px;
+            color: gray;
+            width: 220px;
+            text-align: center;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+            background-color: white;
+        }
+
+        table th, table td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid white;
+        }
+
+        table th {
+            background-color: white;
+            font-weight: bold;
+            color: blue;
+            text-transform: uppercase;
+            font-size: 12px;
+        }
+
+        table tbody tr:hover {
+            background-color: white;
+        }
+
+        /* Buttons */
+        .btn-container {
+            display: flex;
+            justify-content: flex-end;
+            margin-top: 15px;
+            gap: 10px;
+        }
+
+        .btn {
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            font-size: 14px;
+            font-weight: bold;
+            cursor: pointer;
+            width: 200px;
+            text-align: center;
+        }
+
+        .btn.add {
+            background-color: red;
+            color: white;
+        }
+
+        .btn.close {
+            background-color: gray;
+            color: white;
+        }
+
+        .btn:hover {
+            opacity: 0.8;
+        }
+
+    </style>  
+</head>
+<body>
+
+    <div class="header-bar">
+
+        <span class="exit-button">&times;</span>
+    </div>
+
+    <div class="container">
+        <div class="section-filter">
+            <label for="subject">SUBJECT</label>
+            <div class="dropdown-box">Dropdown Box</div>
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>SUBJECT ID</th>
+                    <th>DESCRIPTION</th>
+                    <th>UNITS</th>
+                    <th>SCHEDULE</th>
+                    <th>SECTION</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>BSIT12345</td>
+                    <td>NETWORKING 1 LAB</td>
+                    <td>0.00</td>
+                    <td>WS 08:00AM - 11:00AM</td>
+                    <td>BSIT2C</td>
+                </tr>
+                <tr>
+                    <td>BSIT12345</td>
+                    <td>NETWORKING 1 LEC</td>
+                    <td>0.00</td>
+                    <td>WS 08:00AM - 11:00AM</td>
+                    <td>BSIT2C</td>
+                </tr>
+                <tr>
+                    <td>BSIT12345</td>
+                    <td>NETWORKING 1</td>
+                    <td>0.00</td>
+                    <td>WS 08:00AM - 11:00AM</td>
+                    <td>BSIT2C</td>
+                </tr>
+                <tr>
+                    <td>BSIT12345</td>
+                    <td>NETWORKING 1</td>
+                    <td>0.00</td>
+                    <td>WS 08:00AM - 11:00AM</td>
+                    <td>BSIT2C</td>
+                </tr>
+                <tr>
+                    <td>BSIT12345</td>
+                    <td>NETWORKING 1</td>
+                    <td>0.00</td>
+                    <td>WS 08:00AM - 11:00AM</td>
+                    <td>BSIT2C</td>
+                </tr>
+                <tr>
+                    <td>BSIT12345</td>
+                    <td>NETWORKING 1</td>
+                    <td>0.00</td>
+                    <td>WS 08:00AM - 11:00AM</td>
+                    <td>BSIT2C</td>
+                </tr>
+                <tr>
+                    <td>BSIT12345</td>
+                    <td>NETWORKING 1</td>
+                    <td>0.00</td>
+                    <td>WS 08:00AM - 11:00AM</td>
+                    <td>BSIT2C</td>
+                </tr>
+                <tr>
+                    <td>BSIT12345</td>
+                    <td>NETWORKING 1</td>
+                    <td>0.00</td>
+                    <td>WS 08:00AM - 11:00AM</td>
+                    <td>BSIT2C</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="btn-container">
+            <button class="btn add">ADD SUBJECT SCHEDULE</button>
+            <button class="btn close">CLOSE</button>
+            
+        </div>
+    </div>
+
+</body>
+</html>

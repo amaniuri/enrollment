@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Pending Student Profile</title>
+
+    <style>
+        * {
+            font-family: 'Montserrat', sans-serif;
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            background-color: white;
+            min-height: 100vh;
+            width: 100%;
+        }
+        header {
+            background-color: #D2181B;
+            color: white;
+            padding: 10px 20px;
+            text-align: right;
+            height: 35px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+        }
+        .student-info {
+            display: flex;
+            padding: 20px;
+            border-bottom: 1px solid #eee;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+        .profile-pic img {
+            margin-left: 100px;
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+        }
+        .details {
+            flex: 1;
+            min-width: 200px;
+        }
+        .details p {
+            margin: 5px 0;
+            font-size: 0.95em;
+        }
+        .a-sections-masterlist {
+            text-align: center;
+            font-size: 1.2em;
+            margin: 20px 0;
+            font-weight: bold;
+        }
+        table {
+            width: 80%;
+            border-collapse: collapse;
+            margin: 10px auto; 
+        }
+        th, td {
+            border: 1px solid white;
+            padding: 10px;
+            text-align: center;
+            font-size: 14px;
+        }
+        th {
+            background: #D2181B;
+            color: white;
+            font-weight: normal;
+        }
+        .actions {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            padding: 30px 0;
+            background-color: white;
+        }
+        .action-btn {
+            background-color: #D2181B;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            text-decoration: none;
+        }
+        .action-btn:hover {
+            background-color: #b02020;
+        }
+        .remove-icon {
+            width: 18px;
+            height: 18px;
+            transition: transform 0.2s;
+        }
+        .remove-icon:hover {
+            transform: scale(1.2);
+        }
+        .action-buttons {
+            display: flex;
+            justify-content: center;
+            padding: 20px 0 40px;
+            gap: 20px;
+        }
+        .accept, .reject {
+            padding: 6px 12px;
+            border: none;
+            border-radius: 5px;
+            color: white;
+            cursor: pointer;
+            font-size: 0.9em;
+        }
+        .accept {
+            background-color: green;
+        }
+        .accept:hover {
+            background-color: rgb(9, 111, 9);
+        }
+        .reject {
+            background-color: red;
+        }
+        .reject:hover {
+            background-color: rgb(139, 20, 20);
+        }
+        .nav-link {
+            display: block;
+            margin-bottom: 40px;
+            text-align: center;
+            color: black;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .nav-link:hover {
+            text-decoration: underline;
+        } 
+    </style>
+</head>
+
+<body>
+    
+    <header>
+    </header>
+
+    <div class="student-info">
+        <div class="profile-pic">
+            <img src="profile-placeholder.png" alt="Profile Picture">
+        </div>
+        <div class="details">
+            <p><strong>Student ID:</strong> 12345</p>
+            <p><strong>Name:</strong> URI, AMANI UPAO</p>
+            <p><strong>E-mail:</strong> 123@twd.com</p>
+        </div>
+        <div class="details">
+            <p><strong>College:</strong> COLLEGE OF COMPUTING STUDIES</p>
+            <p><strong>Department:</strong> BACHELOR OF SCIENCE IN INFORMATION TECHNOLOGY</p>
+        </div>
+    </div>
+
+    <div class="actions">
+        <a href="#" class="action-btn">SECTIONS</a>
+        <a href="#" class="action-btn">SUBJECTS</a>
+    </div>
+      
+    <table>
+        <tr>
+            <th>SUBJECT ID</th>
+            <th>DESCRIPTION</th>
+            <th>UNITS</th>
+            <th>SCHEDULE</th>
+            <th>SECTION</th>
+            <th>ACTION</th>
+        </tr>
+        <tr>
+            <td>BSIT12345</td>
+            <td>NETWORKING 1 LAB</td>
+            <td>0.00</td>
+            <td>M 08:00AM - 11:00AM</td>
+            <td>BSIT 1</td>
+            <td><img class="remove-icon" src="x-icon.png" alt="Remove"></td>
+        </tr>
+        <tr>
+            <td>BSIT23456</td>
+            <td>NETWORKING 2 LAB</td>
+            <td>0.00</td>
+            <td>T 08:00AM - 11:00AM</td>
+            <td>BSIT 2</td>
+            <td><img class="remove-icon" src="x-icon.png" alt="Remove"></td>
+        </tr>
+        <tr>
+            <td>BSIT34567</td>
+            <td>NETWORKING 3 LEC</td>
+            <td>0.00</td>
+            <td>WS 08:00AM - 11:00AM</td>
+            <td>BSIT 3</td>
+            <td><img class="remove-icon" src="x-icon.png" alt="Remove"></td>
+        </tr>
+        <tr>
+            <td>BSIT45678</td>
+            <td>NETWORKING 4 LEC</td>
+            <td>0.00</td>
+            <td>TH 08:00AM - 11:00AM</td>
+            <td>BSIT 4</td>
+            <td><img class="remove-icon" src="x-icon.png" alt="Remove"></td>
+        </tr>
+        <tr>
+            <td>BSIT567890</td>
+            <td>NETWORKING 1 LEC</td>
+            <td>0.00</td>
+            <td>F 08:00AM - 11:00AM</td>
+            <td>ACT 1</td>
+            <td><img class="remove-icon" src="x-icon.png" alt="Remove"></td>
+        </tr>
+        <tr>
+            <td>BSIT12345</td>
+            <td>NETWORKING 1 LAB</td>
+            <td>0.00</td>
+            <td>M 08:00AM - 11:00AM</td>
+            <td>BSIT 1</td>
+            <td><img class="remove-icon" src="x-icon.png" alt="Remove"></td>
+        </tr>
+        <tr>
+            <td>BSIT23456</td>
+            <td>NETWORKING 2 LAB</td>
+            <td>0.00</td>
+            <td>T 08:00AM - 11:00AM</td>
+            <td>BSIT 2</td>
+            <td><img class="remove-icon" src="x-icon.png" alt="Remove"></td>
+        </tr>
+        <tr>
+            <td>BSIT34567</td>
+            <td>NETWORKING 3 LEC</td>
+            <td>0.00</td>
+            <td>WS 08:00AM - 11:00AM</td>
+            <td>BSIT 3</td>
+            <td><img class="remove-icon" src="x-icon.png" alt="Remove"></td>
+        </tr>
+        <tr>
+            <td>BSIT45678</td>
+            <td>NETWORKING 4 LEC</td>
+            <td>0.00</td>
+            <td>TH 08:00AM - 11:00AM</td>
+            <td>BSIT 4</td>
+            <td><img class="remove-icon" src="x-icon.png" alt="Remove"></td>
+        </tr>
+        <tr>
+            <td>BSIT567890</td>
+            <td>NETWORKING 1 LEC</td>
+            <td>0.00</td>
+            <td>F 08:00AM - 11:00AM</td>
+            <td>ACT 1</td>
+            <td><img class="remove-icon" src="x-icon.png" alt="Remove"></td>
+        </tr>
+            <td colspan="9"><strong>TOTAL UNITS: 0.00</strong></td>
+        </tr>
+    </table>
+
+    <div class="action-buttons">
+        <button class="accept">Accept</button>
+        <button class="reject">Reject</button>
+    </div>
+
+    <a class="nav-link" href="pending-dashboard.html">BACK TO PENDING LIST</a>
+
+</body>
+</html>

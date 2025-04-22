@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Enrollment</title>
+    <style>
+        body {
+            font-family: "Montserrat", sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: white;
+        }
+
+        .header-bar {
+            background-color: #d32f2f;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding-right: 20px;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 900px;
+            margin: 20px auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: black;
+        }
+
+        .info {
+            display: flex;
+            justify-content: space-between;
+            padding: 15px;
+            background: #f9f9f9;
+            border-radius: 5px;
+            margin-bottom: 15px;
+        }
+
+        .buttons {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .buttons button {
+            background: #d32f2f;
+            color: white;
+            padding: 10px 20px;
+            margin: 5px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        .enrollment-status {
+            text-align: center;
+            font-size: 1.2em;
+            margin: 20px 0;
+            font-weight: bold;
+        }
+
+        .enrollment-status span {
+            color: grey;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+
+        th, td {
+            border: 1px solid white;
+            padding: 10px;
+            text-align: center;
+            font-size: 14px;
+        }
+
+        th {
+            background: #d32f2f;
+            color: white;
+            font-weight: bold;
+        }
+
+        td:last-child {
+            color:black;
+            cursor: pointer;
+        }
+
+        .enroll-btn {
+            display: block;
+            width: 100px;
+            margin: 20px auto;
+            padding: 10px;
+            background: #d32f2f;
+            color: white;
+            text-align: center;
+            border-radius: 5px;
+            cursor: pointer;
+            border: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header-bar">
+        <span style="color: white; font-size: 20px;">⍈</span>
+    </div>
+
+    <div class="container">
+
+        <div class="info">
+            <div>
+                <p><strong>Student Number:</strong> 12345</p>
+                <p><strong>Name:</strong> URI, AMANI UPAO</p>
+                <p><strong>Email:</strong> 123@twdi.com</p>
+            </div>
+            <div>
+                <p><strong>College:</strong> COLLEGE OF</p>
+                <p><strong>Course:</strong> BACHELOR OF SCIENCE IN</p>
+                <p><strong>Status:</strong> FRESHMAN/ TRANSFEREE/ OLD STUDENT</p>
+                <p><strong>Year Level:</strong> 1</p>
+            </div>
+        </div>       
+
+        <div class="buttons">
+            <button>GRADES</button>
+            <button>SECTIONS</button>
+            <button>SUBJECTS</button>
+        </div>
+
+        <div class="enrollment-status">
+            <strong>ENROLLMENT STATUS:</strong> <span>NONE</span>
+        </div>
+
+        <table>
+            <tr>
+                <th>SUBJECT ID</th>
+                <th>DESCRIPTION</th>
+                <th>UNITS</th>
+                <th>SCHEDULE</th>
+                <th>SECTION</th>
+            </tr>
+            <tr>
+                <td>BSIT12345</td>
+                <td>NETWORKING 1 LAB</td>
+                <td>0.00</td>
+                <td>WS 08:00AM - 11:00AM</td>
+                <td>BSIT2C ❌</td>
+            </tr>
+            <tr>
+                <td>BSIT12345</td>
+                <td>NETWORKING 1 LEC</td>
+                <td>0.00</td>
+                <td>WS 08:00AM - 11:00AM</td>
+                <td>BSIT2C ❌</td>
+            </tr>
+            <tr>
+                <td>BSIT12345</td>
+                <td>NETWORKING 1</td>
+                <td>0.00</td>
+                <td>WS 08:00AM - 11:00AM</td>
+                <td>BSIT2C ❌</td>
+            </tr>
+            <tr>
+                <td>BSIT12345</td>
+                <td>NETWORKING 1</td>
+                <td>0.00</td>
+                <td>WS 08:00AM - 11:00AM</td>
+                <td>BSIT2C ❌</td>
+            </tr>
+            <tr>
+                <td>BSIT12345</td>
+                <td>NETWORKING 1</td>
+                <td>0.00</td>
+                <td>WS 08:00AM - 11:00AM</td>
+                <td>BSIT2C ❌</td>
+            </tr>
+            <tr>
+                <td>BSIT12345</td>
+                <td>NETWORKING 1</td>
+                <td>0.00</td>
+                <td>WS 08:00AM - 11:00AM</td>
+                <td>BSIT2C ❌</td>
+            </tr>
+            <tr>
+                <td>BSIT12345</td>
+                <td>NETWORKING 1</td>
+                <td>0.00</td>
+                <td>WS 08:00AM - 11:00AM</td>
+                <td>BSIT2C ❌</td>
+            </tr>
+            <tr>
+                <tr>
+                    <td>BSIT12345</td>
+                    <td>NETWORKING 1</td>
+                    <td>0.00</td>
+                    <td>WS 08:00AM - 11:00AM</td>
+                    <td>BSIT2C ❌</td>
+                </tr>
+                <td colspan="2"><strong>TOTAL UNITS:</strong></td>
+                <td colspan="3">0.00</td>
+            </tr>
+        </table>
+
+        <button class="enroll-btn">ENROLL</button>
+    </div>
+
+</body>
+</html>

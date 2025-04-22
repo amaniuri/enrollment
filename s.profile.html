@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Portal</title>
+
+    <style>
+        body {
+            font-family: sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .navs {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            padding-right: 80px;
+            background-color: #D2181B;
+        }
+
+
+        header {
+            background-color: #d32f2f;
+            color: white;
+            padding: 10px 15px; 
+            text-align: right;
+            border-radius: 8px 8px 0 0;
+            position: relative;
+            height: 40px;
+            display: flex; 
+            align-items: center; 
+            justify-content: flex-end; 
+        }
+
+        .logout-btn {
+            display: inline-block;
+        }
+
+        .logout-btn img {
+            width: 25px;
+            height: 25px;
+        }
+
+        .student-info {
+            display: flex;
+            padding: 20px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .profile-pic img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            margin-right: 20px;
+        }
+
+        .details {
+            margin-right: 50px; 
+        }
+
+        .details p {
+            margin: 5px 0;
+            font-size: 0.9em;
+            line-height: 1.5; 
+        }
+
+        .actions {
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        .action-btn {
+            background-color: #d32f2f;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin: 0 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+        }
+
+        .enrollment-status {
+            text-align: center;
+            padding: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <a href="s.login.html" class="logout-btn">
+                <img src="logout-button.png" alt="Logout"> 
+            </a> 
+        </header>
+
+        <div class="student-info">
+            <div class="profile-pic">
+                <img src="profile-placeholder.png" alt="Profile Picture">
+            </div>
+            <div class="details">
+                <p><strong>Student Number:</strong> 12345</p>
+                <p><strong>Name:</strong> URI, AMANI UPAO</p>
+                <p><strong>E-mail:</strong> 123@twd.com</p>
+            </div>
+            <div class="details">
+                <p><strong>College:</strong> COLLEGE OF</p>
+                <p><strong>Course:</strong> BACHELOR OF SCIENCE IN</p>
+                <p><strong>Status:</strong> FRESHMAN / TRANSFEREE / OLD STUDENT</p>
+                <p><strong>Year Level:</strong> 1</p> 
+            </div>
+        </div>
+
+        <div class="actions">
+            <button class="action-btn">GRADES</button>
+            <button class="action-btn">SECTIONS</button>
+            <button class="action-btn">SUBJECTS</button>
+        </div>
+
+        <div class="enrollment-status">
+            <p>ENROLLMENT STATUS: NONE</p>
+        </div>
+    </div>
+</body>
+</html>
