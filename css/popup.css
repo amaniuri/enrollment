@@ -64,19 +64,18 @@ h2 {
 .grades-table th, 
 .sections-table th,
 .subjects-table th {
-    background-color: none;
     padding: 10px;
     text-align: left;
-    border: 1px solid #ddd;
     font-weight: normal;
     color: #4285F4; 
+    border-bottom: 1px solid #919191;
 }
 
 .grades-table td, 
 .sections-table td,
 .subjects-table td {
     padding: 10px;
-    border: 1px solid #ddd;
+    border-bottom: 1px solid #919191;
 }
 
 .subject-id {

@@ -1,3 +1,4 @@
+/* BASIS FOR BOTH PROFILES */
 * {
     font-family: 'Montserrat', sans-serif;
     box-sizing: border-box;
@@ -25,6 +26,8 @@ header {
     height: 22px;
     cursor: pointer;
 }
+
+/* STUDENT, INSTRUCTOR INFORMATION CARD */
 .student-info,
 .instructor-info {
     display: flex;
@@ -35,6 +38,9 @@ header {
     gap: 20px;
     align-items: flex-start;
     margin-left: 90px;
+}
+.instructor-info {
+    margin-left: 0;
 }
 .details-container {
     display: flex;
@@ -64,6 +70,9 @@ header {
     margin-left: 2px;
     border-radius: 5px;
 }
+
+/* GRADES, SECTIONS, SUBJECT POP UP BUTTON */
+/* PENDING, COMPLETED BUTTON */
 .actions {
     margin-top: -25px;
     display: flex;
@@ -85,36 +94,129 @@ header {
 .action-btn:hover {
     background-color: #b02020;
 }
+
+/* STUDENT 'ENROLLMENT STATUS TEXT' */
 .enrollment-status {
     text-align: center;
     font-size: 20px;
     font-weight: 500;
 }
-.enrollment-status span {
+#status-not-yet-enrolled {
     color: lightgrey;
     font-weight: normal;
 }
+#status-in-progress {
+    color: #4285F4;
+    font-weight: normal;
+}
+#status-enrolled {
+    color: #9CEF96;
+    font-weight: normal;
+}
 
-/* INSTRUCTOR */
+/* INSTRUCTOR 'MY SECTIONS' STUDENT 'SUBJECTS CURRENTLY ENROLLED IN' */
+.i-container {
+    width: 70%;
+    margin: 30px auto;
+    padding: 20px;
+    border-radius: 10px;
+    border: #919191;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); 
+}
+.btm-txt p {
+    margin-top: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #919191;
+}
+.total-units {
+    color: black;
+    margin-left: 50px;
+}
+.tu-txt {
+    display: flex;
+    justify-content: flex-end;
+    padding: 10px 20px;
+}
+.tu {
+    color: black;
+}
 .masterlist {
     text-align: center;
-    font-size: 1.2em;
-    margin: 20px 0;
-    font-weight: bold;
+    font-size: 22px;
+    font-weight: 600;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
 }
-table {
-    width: 80%;
+.masterlist-table {
+    width: 100%;
     border-collapse: collapse;
     margin: 10px auto; 
 }
-th, td {
+.masterlist-table td {
     border: 1px solid white;
     padding: 10px;
     text-align: center;
     font-size: 14px;
+    border-bottom: 1px solid #919191;
 }
-th {
-    background: #D2181B;
-    color: white;
+.masterlist-table th {
+    background: none;
+    color: #4285F4;
     font-weight: normal;
+    padding: 10px;
+    text-align: center;
+    font-size: 14px;
+    border-bottom: 1px solid #919191;
+}
+.masterlist-table h3 {
+    font-weight: normal;
+    font-size: 16px;
+}
+
+/* PENDING STUDENT */
+.remove-icon {
+    width: 18px;
+    height: 18px;
+    transition: transform 0.2s;
+}
+.remove-icon:hover {
+    transform: scale(1.2);
+}
+.action-buttons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+.action-buttons button {
+    background: none;
+    border: none;
+    padding: 5px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.action-buttons img {
+    width: 45px;
+    height: 45px;
+}
+.action-buttons button:hover {
+    transform: scale(1.1);
+}
+
+/* RETURN BUTTON */
+.return {
+    width: 30px; 
+    height: 30px;
+    cursor: pointer; 
+    position: fixed; 
+    top: 50px; 
+    left: 100px; 
+    z-index: 1000; 
+}
+.return:hover {
+    transform: scale(1.1); /* Slightly increase the size on hover for a nice effect */
 }

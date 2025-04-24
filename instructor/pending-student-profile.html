@@ -11,10 +11,11 @@
 <body>
 
     <header>
-        <a href="../login/i.login.html" class="logout-btn">
-            <img src="../images/logout-button.png" alt="Logout">
-        </a>
     </header>
+
+    <a href="javascript:history.back()" class="return-link">
+        <img class="return" src="../images/back.png" alt="return">
+    </a>    
 
     <div class="student-info">
         <div class="profile-pic">
@@ -43,62 +44,12 @@
     </div>    
 
     <div class="actions">
-        <button class="action-btn" id="grades-button">GRADES</button>
         <button class="action-btn" id="sections-button">SECTIONS</button>
         <button class="action-btn" id="subjects-button">SUBJECTS</button>
     </div>
       
     <div class="enrollment-status">
-        <p>ENROLLMENT STATUS: <span id="status-not-yet-enrolled">NOT YET ENROLLED</span></p>
-    </div>
-
-    <div id="grades-popup" class="popup-container">
-        <div class="popup-content">
-            <a href="#" class="close-button" id="close-grades">&times;</a>
-            <h2>GRADES</h2>
-            <div class="semester-title">
-                <h1>2024 - 2025 (SECOND SEMESTER)</h1>
-            </div>
-            <table class="grades-table">
-                <thead>
-                    <tr>
-                        <th class="subject-id">SUBJECT ID</th>
-                        <th class="description">DESCRIPTION</th>
-                        <th class="status">STATUS</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>BSIT12345</td>
-                        <td>NETWORKING 1</td>
-                        <td>PASSED</td>
-                    </tr>
-                    <tr>
-                        <td>BSIT12345</td>
-                        <td>NETWORKING 1</td>
-                        <td>PASSED</td>
-                    </tr>
-                    <tr>
-                        <td>BSIT12345</td>
-                        <td>NETWORKING 1</td>
-                        <td>PASSED</td>
-                    </tr>
-                    <tr>
-                        <td>BSIT12345</td>
-                        <td>NETWORKING 1</td>
-                        <td>PASSED</td>
-                    </tr>
-                    <tr>
-                        <td>BSIT12345</td>
-                        <td>NETWORKING 1</td>
-                        <td>PASSED</td>
-                    </tr>
-                </tbody>
-            </table>
-            <div class="button-container">
-                <button class="close-button" id="close-grades-btn">CLOSE</button>
-            </div>
-        </div>
+        <p>ENROLLMENT STATUS: <span id="status-in-progress">IN PROGRESS</span></p>
     </div>
 
     <div id="sections-popup" class="popup-container">
@@ -231,8 +182,112 @@
         </div>
     </div>
 
+    <div class="i-container">
+        <table class="masterlist-table">
+            <tr>
+                <th>SUBJECT ID</th>
+                <th>DESCRIPTION</th>
+                <th>UNITS</th>
+                <th>SCHEDULE</th>
+                <th>SECTION</th>
+                <th>ACTION</th>
+            </tr>
+            <tr>
+                <td>BSIT12345</td>
+                <td>NETWORKING 1 LAB</td>
+                <td>0.00</td>
+                <td>M 08:00AM - 11:00AM</td>
+                <td>BSIT 1</td>
+                <td><img class="remove-icon" src="../images/x-icon.png" alt="Remove"></td>
+            </tr>
+            <tr>
+                <td>BSIT23456</td>
+                <td>NETWORKING 2 LAB</td>
+                <td>0.00</td>
+                <td>T 08:00AM - 11:00AM</td>
+                <td>BSIT 2</td>
+                <td><img class="remove-icon" src="../images/x-icon.png" alt="Remove"></td>
+            </tr>
+            <tr>
+                <td>BSIT34567</td>
+                <td>NETWORKING 3 LEC</td>
+                <td>0.00</td>
+                <td>WS 08:00AM - 11:00AM</td>
+                <td>BSIT 3</td>
+                <td><img class="remove-icon" src="../images/x-icon.png" alt="Remove"></td>
+            </tr>
+            <tr>
+                <td>BSIT45678</td>
+                <td>NETWORKING 4 LEC</td>
+                <td>0.00</td>
+                <td>TH 08:00AM - 11:00AM</td>
+                <td>BSIT 4</td>
+                <td><img class="remove-icon" src="../images/x-icon.png" alt="Remove"></td>
+            </tr>
+            <tr>
+                <td>BSIT567890</td>
+                <td>NETWORKING 1 LEC</td>
+                <td>0.00</td>
+                <td>F 08:00AM - 11:00AM</td>
+                <td>ACT 1</td>
+                <td><img class="remove-icon" src="../images/x-icon.png" alt="Remove"></td>
+            </tr>
+            <tr>
+                <td>BSIT12345</td>
+                <td>NETWORKING 1 LAB</td>
+                <td>0.00</td>
+                <td>M 08:00AM - 11:00AM</td>
+                <td>BSIT 1</td>
+                <td><img class="remove-icon" src="../images/x-icon.png" alt="Remove"></td>
+            </tr>
+            <tr>
+                <td>BSIT23456</td>
+                <td>NETWORKING 2 LAB</td>
+                <td>0.00</td>
+                <td>T 08:00AM - 11:00AM</td>
+                <td>BSIT 2</td>
+                <td><img class="remove-icon" src="../images/x-icon.png" alt="Remove"></td>
+            </tr>
+            <tr>
+                <td>BSIT34567</td>
+                <td>NETWORKING 3 LEC</td>
+                <td>0.00</td>
+                <td>WS 08:00AM - 11:00AM</td>
+                <td>BSIT 3</td>
+                <td><img class="remove-icon" src="../images/x-icon.png" alt="Remove"></td>
+            </tr>
+            <tr>
+                <td>BSIT45678</td>
+                <td>NETWORKING 4 LEC</td>
+                <td>0.00</td>
+                <td>TH 08:00AM - 11:00AM</td>
+                <td>BSIT 4</td>
+                <td><img class="remove-icon" src="../images/x-icon.png" alt="Remove"></td>
+            </tr>
+            <tr>
+                <td>BSIT567890</td>
+                <td>NETWORKING 1 LEC</td>
+                <td>0.00</td>
+                <td>F 08:00AM - 11:00AM</td>
+                <td>ACT 1</td>
+                <td><img class="remove-icon" src="../images/x-icon.png" alt="Remove"></td>
+            </tr>
+                <td colspan="9"><h3>TOTAL UNITS: 0.00</h3></td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="action-buttons">
+        <button class="enroll">
+            <img src="../images/check-icon.png" alt="Enroll"/>
+        </button>
+        <button class="reject">
+            <img src="../images/x-icon.png" alt="Reject"/>
+        </button>
+    </div>
+
     <script src ="../js/dropdown.js"></script>
-    <script src="../js/popup.js"></script>
+    <script src="../js/popup-section-subject.js"></script>
 
 </body>
 </html>
