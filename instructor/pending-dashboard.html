@@ -4,325 +4,179 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Pending Enrollment Dashboard</title>
-
-    <style>
-        * {
-            font-family: 'Montserrat', sans-serif;
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-        body {
-            background-color: #f5f7fa;
-        }
-        .container {
-            max-width: 80%;
-            margin: 40px auto;
-            padding: 20px;
-            background: white;
-            border-radius: 12px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-        }
-        h1 {
-            text-align: center;
-            color: black;
-            margin-bottom: 30px;
-        }
-        .course-group {
-            margin-bottom: 40px;
-        }
-        .course-group h2 {
-            color: black;
-            margin-bottom: 10px;
-            font-size: 1.2em;
-            text-transform: uppercase;
-        }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 10px;
-        }
-        th, td {
-            padding: 12px 16px;
-            border-bottom: 1px solid #e0e0e0;
-            vertical-align: middle;
-        }
-        th {
-            background-color: #D2181B;
-            color: white;
-            font-weight: normal;
-            text-align: left;
-        }
-        th:last-child {
-            text-align: right;
-        }
-        td:last-child {
-            text-align: right;
-        }
-        .action-buttons {
-            display: inline-flex;
-            gap: 10px;
-        }
-        .enroll, .reject {
-            padding: 6px 12px;
-            border: none;
-            border-radius: 5px;
-            color: white;
-            cursor: pointer;
-            font-size: 0.9em;
-        }
-        .enroll {
-            background-color: green;
-        }
-        .enroll:hover {
-            background-color: rgb(9, 111, 9);
-        }
-        .reject {
-            background-color: red;
-        }
-        .reject:hover {
-            background-color: rgb(139, 20, 20);
-        }
-        .nav-link {
-            display: block;
-            margin-top: 40px;
-            text-align: center;
-            color: black;
-            text-decoration: none;
-            font-weight: bold;
-        }
-        .nav-link:hover {
-            text-decoration: underline;
-        }
-        .student-link {
-            color: black;
-            text-decoration: none;
-
-        }
-        .student-link:hover {
-            text-decoration: underline;
-        }
-    </style>
+    <link rel="stylesheet" href="../css/dashboard.css"/>
 </head>
 
 <body>
+    <header>
+    </header>
+
+    <a href="javascript:history.back()" class="return-link">
+        <img class="return" src="../images/back.png" alt="return">
+    </a> 
     
     <div class="container">
         <h1>PENDING FOR ENROLLMENT</h1>
-        <div class="course-group">
-            <h2>Associate in Computer Technology</h2>
+        <div class="college">
+            <h2>COLLEGE OF COMPUTING STUDIES</h2>
             <table>
                 <thead>
                     <tr>
                         <th>STUDENT ID</th>
                         <th>STUDENT NAME</th>
-                        <th>STATUS</th>
-                        <th style="text-align: right;">ACTION</th>
+                        <th>COURSE</th>
+                        <th>YEAR</th>
+                        <th class="enrollment-action">ACTION</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
                         <td>12345</td>
-                        <td><a href="pending-student.html" class="student-link">Amani U. Uri</a></td>
-                        <td>Freshman</td>
+                        <td><a href="pending-student-profile.html" class="student-link">URI, AMANI UPAO</a></td>
+                        <td>INFORMATION TECHNOLOGY</td>
+                        <td>1</td>
                         <td>
                             <div class="action-buttons">
-                                <button class="enroll">Enroll</button>
-                                <button class="reject">Reject</button>
+                                <button class="enroll">
+                                    <img src="../images/check-icon.png" alt="Enroll"/>
+                                </button>
+                                <button class="reject">
+                                    <img src="../images/x-icon.png" alt="Reject"/>
+                                </button>
                             </div>
                         </td>
                     </tr>
                     <tr>
                         <td>12345</td>
-                        <td><a href="pending-student.html" class="student-link">Amani U. Uri</a></td>
-                        <td>Freshman</td>
+                        <td><a href="pending-student-profile.html" class="student-link">URI, AMANI UPAO</a></td>
+                        <td>INFORMATION TECHNOLOGY</td>
+                        <td>1</td>
                         <td>
                             <div class="action-buttons">
-                                <button class="enroll">Enroll</button>
-                                <button class="reject">Reject</button>
+                                <button class="enroll">
+                                    <img src="../images/check-icon.png" alt="Enroll"/>
+                                </button>
+                                <button class="reject">
+                                    <img src="../images/x-icon.png" alt="Reject"/>
+                                </button>
                             </div>
                         </td>
                     </tr>
                     <tr>
                         <td>12345</td>
-                        <td><a href="pending-student.html" class="student-link">Amani U. Uri</a></td>
-                        <td>Freshman</td>
+                        <td><a href="pending-student-profile.html" class="student-link">URI, AMANI UPAO</a></td>
+                        <td>INFORMATION TECHNOLOGY</td>
+                        <td>1</td>
                         <td>
                             <div class="action-buttons">
-                                <button class="enroll">Enroll</button>
-                                <button class="reject">Reject</button>
+                                <button class="enroll">
+                                    <img src="../images/check-icon.png" alt="Enroll"/>
+                                </button>
+                                <button class="reject">
+                                    <img src="../images/x-icon.png" alt="Reject"/>
+                                </button>
                             </div>
                         </td>
                     </tr>
                     <tr>
-                        <td>12345</td>
-                        <td><a href="pending-student.html" class="student-link">Amani U. Uri</a></td>
-                        <td>Freshman</td>
+                        <td>23456</td>
+                        <td>SAHIBUL, JAYNA LOMONGO</td>
+                        <td>COMPUTER SCIENCE</td>
+                        <td>3</td>
                         <td>
                             <div class="action-buttons">
-                                <button class="enroll">Enroll</button>
-                                <button class="reject">Reject</button>
+                                <button class="enroll">
+                                    <img src="../images/check-icon.png" alt="Enroll"/>
+                                </button>
+                                <button class="reject">
+                                    <img src="../images/x-icon.png" alt="Reject"/>
+                                </button>
                             </div>
                         </td>
                     </tr>
                     <tr>
-                        <td>12345</td>
-                        <td><a href="pending-student.html" class="student-link">Amani U. Uri</a></td>
-                        <td>Freshman</td>
+                        <td>23456</td>
+                        <td>SAHIBUL, JAYNA LOMONGO</td>
+                        <td>COMPUTER SCIENCE</td>
+                        <td>3</td>
                         <td>
                             <div class="action-buttons">
-                                <button class="enroll">Enroll</button>
-                                <button class="reject">Reject</button>
+                                <button class="enroll">
+                                    <img src="../images/check-icon.png" alt="Enroll"/>
+                                </button>
+                                <button class="reject">
+                                    <img src="../images/x-icon.png" alt="Reject"/>
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>23456</td>
+                        <td>SAHIBUL, JAYNA LOMONGO</td>
+                        <td>COMPUTER SCIENCE</td>
+                        <td>3</td>
+                        <td>
+                            <div class="action-buttons">
+                                <button class="enroll">
+                                    <img src="../images/check-icon.png" alt="Enroll"/>
+                                </button>
+                                <button class="reject">
+                                    <img src="../images/x-icon.png" alt="Reject"/>
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>34567</td>
+                        <td>SAPIE, SHAHEENA CANONCE</td>
+                        <td>ASSOCIATE IN COMPUTER TECHNOLOGY</td>
+                        <td>2</td>
+                        <td>
+                            <div class="action-buttons">
+                                <button class="enroll">
+                                    <img src="../images/check-icon.png" alt="Enroll"/>
+                                </button>
+                                <button class="reject">
+                                    <img src="../images/x-icon.png" alt="Reject"/>
+                                </button>
+                            </div> 
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>34567</td>
+                        <td>SAPIE, SHAHEENA CANONCE</td>
+                        <td>ASSOCIATE IN COMPUTER TECHNOLOGY</td>
+                        <td>2</td>
+                        <td>
+                            <div class="action-buttons">
+                                <button class="enroll">
+                                    <img src="../images/check-icon.png" alt="Enroll"/>
+                                </button>
+                                <button class="reject">
+                                    <img src="../images/x-icon.png" alt="Reject"/>
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>34567</td>
+                        <td>SAPIE, SHAHEENA CANONCE</td>
+                        <td>ASSOCIATE IN COMPUTER TECHNOLOGY</td>
+                        <td>2</td>
+                        <td>
+                            <div class="action-buttons">
+                                <button class="enroll">
+                                    <img src="../images/check-icon.png" alt="Enroll"/>
+                                </button>
+                                <button class="reject">
+                                    <img src="../images/x-icon.png" alt="Reject"/>
+                                </button>
                             </div>
                         </td>
                     </tr>
                 </tbody>
             </table>
         </div>
-
-    <div class="course-group">
-        <h2>Computer Technology</h2>
-        <table>
-            <thead>
-                <tr>
-                    <th>STUDENT ID</th>
-                    <th>STUDENT NAME</th>
-                    <th>STATUS</th>
-                    <th style="text-align: right;">ACTION</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>23456</td>
-                    <td>Jayna L. Sahibul</td>
-                    <td>Transferee</td>
-                    <td>
-                        <div class="action-buttons">
-                            <button class="enroll">Enroll</button>
-                            <button class="reject">Reject</button>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>23456</td>
-                    <td>Jayna L. Sahibul</td>
-                    <td>Transferee</td>
-                    <td>
-                        <div class="action-buttons">
-                            <button class="enroll">Enroll</button>
-                            <button class="reject">Reject</button>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>23456</td>
-                    <td>Jayna L. Sahibul</td>
-                    <td>Transferee</td>
-                    <td>
-                        <div class="action-buttons">
-                            <button class="enroll">Enroll</button>
-                            <button class="reject">Reject</button>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>23456</td>
-                    <td>Jayna L. Sahibul</td>
-                    <td>Transferee</td>
-                    <td>
-                        <div class="action-buttons">
-                            <button class="enroll">Enroll</button>
-                            <button class="reject">Reject</button>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>23456</td>
-                    <td>Jayna L. Sahibul</td>
-                    <td>Transferee</td>
-                    <td>
-                        <div class="action-buttons">
-                            <button class="enroll">Enroll</button>
-                            <button class="reject">Reject</button>
-                        </div>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-    
-    <div class="course-group">
-        <h2>Information Technology</h2>
-        <table>
-            <thead>
-                <tr>
-                    <th>STUDENT ID</th>
-                    <th>STUDENT NAME</th>
-                    <th>STATUS</th>
-                    <th style="text-align: right;">ACTION</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>34567</td>
-                    <td>Shaheena C. Sapie</td>
-                    <td>Old Student</td>
-                    <td>
-                        <div class="action-buttons">
-                            <button class="enroll">Enroll</button>
-                            <button class="reject">Reject</button>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>34567</td>
-                    <td>Shaheena C. Sapie</td>
-                    <td>Old Student</td>
-                    <td>
-                        <div class="action-buttons">
-                            <button class="enroll">Enroll</button>
-                            <button class="reject">Reject</button>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>34567</td>
-                    <td>Shaheena C. Sapie</td>
-                    <td>Old Student</td>
-                    <td>
-                        <div class="action-buttons">
-                            <button class="enroll">Enroll</button>
-                            <button class="reject">Reject</button>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>34567</td>
-                    <td>Shaheena C. Sapie</td>
-                    <td>Old Student</td>
-                    <td>
-                        <div class="action-buttons">
-                            <button class="enroll">Enroll</button>
-                            <button class="reject">Reject</button>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>34567</td>
-                    <td>Shaheena C. Sapie</td>
-                    <td>Old Student</td>
-                    <td>
-                        <div class="action-buttons">
-                            <button class="enroll">Enroll</button>
-                            <button class="reject">Reject</button>
-                        </div>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-    
-    <a class="nav-link" href="i.profile.html">BACK TO PROFILE</a>
     </div>
 
 </body>
