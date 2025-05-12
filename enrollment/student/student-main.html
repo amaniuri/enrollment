@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WMSU Student Portal</title>
+    <link rel="stylesheet" href="../css/header-infocard.css">
+
+    <style>   
+        .schedule-section {
+            flex: 1;
+            padding: 25px;
+            background: white;
+        }
+        
+        .crud-controls {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            margin-bottom: 20px;
+            gap: 10px;
+        }
+        
+        .search-box {
+            display: flex;
+            align-items: center;
+            background: #f5f5f7;
+            border-radius: 6px;
+            padding: 0 15px;
+            flex: 1;
+            max-width: 300px;
+            height: 40px;
+            border: 1px solid #ddd;
+        }
+        
+        .search-box input {
+            border: none;
+            background: transparent;
+            height: 100%;
+            width: 100%;
+            padding: 0 10px;
+            font-size: 14px;
+            outline: none;
+        }
+        
+        .add-btn, .enroll-btn {
+            background: #c61a27;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .add-btn:hover, .enroll-btn:hover {
+            background: #a71521;
+        }
+        .enroll-btn-wrapper {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .enroll-btn {
+            display: none; /* shown via JS when subjects are added */
+        }
+
+        .enroll-btn:disabled {
+            background-color: #aaa;
+            pointer-events: none;
+        }
+
+        
+        .schedule-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        .schedule-table th {
+            padding: 12px 10px;
+            text-align: left;
+            color: #5778FF;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-weight: 600;
+            border-bottom: 1px solid #919191;
+        }
+        
+        .schedule-table td {
+            padding: 8px 10px;
+            font-size: 13px;
+            border-bottom: 1px solid #919191;
+        }
+        
+        .course-code {
+            font-weight: 600;
+            color: #c61a27;
+        }
+        
+        .schedule-time {
+            font-weight: 600;
+            color: #333;
+        }
+        
+        .remove-icon {
+            width: 16px;
+            height: 16px;
+            cursor: pointer;
+        }
+        
+        .total-units {
+            display: flex;
+            justify-content: flex-end;
+            margin-top: 20px;
+            padding-top: 15px;
+            border-top: 1px solid #eee;
+        }
+        
+        .units-label {
+            font-weight: 600;
+            margin-right: 15px;
+        }
+        
+        .units-value {
+            font-weight: 600;
+        }
+        
+        .badge {
+            display: inline-block;
+            padding: 4px 8px;
+            background-color: #f0f0f0;
+            color: #666;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        
+        .badge.lab {
+            background-color: #e8f4fd;
+            color: #3498db;
+        }
+        
+        .badge.lec {
+            background-color: #fef2e5;
+            color: #f39c12;
+        }
+        
+        .empty-state {
+            padding: 40px;
+            text-align: center;
+            border: 2px dashed #ddd;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        
+        .empty-state-text {
+            color: #999;
+            margin-bottom: 15px;
+            font-size: 16px;
+        }
+        
+        /* Modal styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 100;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .modal.show {
+            display: flex;
+        }
+        
+        .modal-content {
+            background-color: white;
+            border-radius: 10px;
+            width: 500px;
+            max-width: 90%;
+            max-height: 90vh;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .modal-header {
+            padding: 15px 20px;
+            background-color: #c61a27;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .modal-title {
+            font-weight: 600;
+            font-size: 16px;
+        }
+        
+        .close-btn {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 20px;
+            cursor: pointer;
+        }
+        
+        .modal-body {
+            padding: 20px;
+        }
+        
+        .form-group {
+            margin-bottom: 15px;
+        }
+        
+        .form-label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 600;
+            font-size: 14px;
+        }
+        
+        .form-input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+        
+        .form-select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 14px;
+            background-color: white;
+        }
+        
+        .modal-footer {
+            padding: 15px 20px;
+            border-top: 1px solid #eee;
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+            background-color: #f9f9f9;
+            position: sticky; 
+            bottom: 0;
+        }
+        
+        .cancel-btn {
+            padding: 10px 20px;
+            background-color: #ddd;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 600;
+            min-width: 100px;
+        }
+        
+        .cancel-btn:hover {
+            background-color: #ccc;
+        }
+        
+        .save-btn {
+            padding: 10px 20px;
+            background-color: #c61a27;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 600;
+            min-width: 100px;
+        }
+        
+        .save-btn:hover {
+            background-color: #a71521;
+        }
+        
+        .hint-text {
+            font-size: 12px;
+            color: #999;
+            margin-top: 5px;
+        }
+
+        @media (max-width: 900px) {
+            .main-content {
+                flex-direction: column;
+            }
+            
+            .profile-section {
+                width: 100%;
+                border-right: none;
+                border-bottom: 1px solid #eee;
+                padding-bottom: 15px;
+            }
+            
+            .schedule-table-container {
+                overflow-x: auto;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <div class="header">
+        <div class="logo">
+            <img src="../images/seal.jfif" alt="WMSU SEAL">
+            <div>
+                <div class="university-name">WESTERN MINDANAO STATE UNIVERSITY</div>
+                <div class="location">Zamboanga City</div>
+            </div>
+        </div>
+        <div class="system-name">STUDENT PORTAL</div>
+    </div>
+    
+    <div class="main-content">
+
+        <!-- USER INFORMATION CARD & NAVIGATION -->
+        <div class="profile-section">
+            <div class="profile-pic">
+                <img src="../images/profile-placeholder.png" alt="PROFILE PIC">
+            </div>
+            <div class="student-name">AMANI UPAO URI</div>
+            <div class="student-id">2023-02456</div>
+            <div class="student-info">
+                <div class="info-item">
+                    <div class="info-label">Email:</div>
+                    <div class="info-value">WTF@GMAIL.COM</div>
+                </div>
+                <div class="info-item">
+                    <div class="info-label">College:</div>
+                    <div class="info-value">COLLEGE OF COMPUTING STUDIES</div>
+                </div>
+                <div class="info-item">
+                    <div class="info-label">Course:</div>
+                    <div class="info-value">BSIT</div>
+                </div>
+                <div class="info-item">
+                    <div class="info-label">Year Level:</div>
+                    <div class="info-value">1</div>
+                </div>
+                <div class="info-item">
+                    <div class="info-label">Status:</div>
+                    <div class="info-value">FRESHMAN</div>
+                </div>
+            </div>
+
+            <div class="side-nav">
+                <div class="nav-item active">
+                    <a href="student-main.html">SCHEDULE</a>
+                </div>
+                <div class="nav-item">
+                    <a href="grades.html">GRADES</a>
+                </div>
+                <div class="nav-item">
+                    <a href="../login/s.login.html" class="logout-btn" onclick="return confirmLogout()">LOG OUT</a>
+                </div>
+            </div> 
+        </div>
+        
+        <!--  -->
+        <div class="schedule-section active">
+            
+            <div class="crud-controls">
+                <button class="add-btn" onclick="openAddModal()">
+                    <span>+</span> ADD SUBJECT
+                </button>
+                <button class="add-btn" onclick="openAddModal()">
+                    <span>+</span> ADD SECTION
+                </button>
+            </div>
+            
+            <div class="schedule-table-container">
+                <table class="schedule-table">
+                    <thead>
+                        <tr>
+                            <th>SUBJECT ID</th>
+                            <th>DESCRIPTION</th>
+                            <th>UNITS</th>
+                            <th>SCHEDULE</th>
+                            <th>INSTRUCTOR</th>
+                            <th>SECTION</th>
+                            <th>ACTIONS</th>
+                        </tr>
+                    </thead>
+                    <tbody id="subject-list">
+                        <!-- Subject list will be populated dynamically -->
+                    </tbody>
+                </table>
+                
+                <!-- Empty state (shown when there are no subjects) -->
+                <div class="empty-state" id="empty-state">
+                    <div class="empty-state-text">Nothing added yet. Click "ADD SECTIONS" or "ADD SUBJECTS" to get started.</div>
+                </div>
+                
+                <div class="total-units">
+                    <div class="units-label">TOTAL UNITS:</div>
+                    <div class="units-value">0.00</div>
+                </div>
+
+                <div class="enroll-btn-wrapper">
+                    <button class="enroll-btn" id="enroll-btn" onclick="enrollSubjects()">ENROLL</button>
+                </div>
+
+
+            </div>
+            
+        </div>
+    </div>
+    
+    <!-- Add/Edit Subject Modal -->
+    <div class="modal" id="subject-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="modal-title">Add New Subject</div>
+                <button class="close-btn" onclick="closeModal()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="subject-form">
+                    <div class="form-group">
+                        <label class="form-label">Subject ID</label>
+                        <input type="text" class="form-input" id="subject-id" placeholder="e.g. BSIT2345">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Description</label>
+                        <input type="text" class="form-input" id="subject-desc" placeholder="e.g. NETWORKING 1">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Type</label>
+                        <select class="form-select" id="subject-type">
+                            <option value="regular">Regular</option>
+                            <option value="lab">Laboratory</option>
+                            <option value="lec">Lecture</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Units</label>
+                        <input type="number" class="form-input" id="subject-units" placeholder="0.00" step="0.01">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Schedule Day</label>
+                        <select class="form-select" id="subject-day">
+                            <option value="MW">MW (Mon-Wed)</option>
+                            <option value="TTH">TTH (Tue-Thu)</option>
+                            <option value="WS">WS (Wed-Sat)</option>
+                            <option value="F">F (Friday)</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Start Time</label>
+                        <input type="time" class="form-input" id="subject-start-time">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">End Time</label>
+                        <input type="time" class="form-input" id="subject-end-time">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Instructor</label>
+                        <input type="text" class="form-input" id="subject-instructor" placeholder="Instructor's Full Name">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Section</label>
+                        <input type="text" class="form-input" id="subject-section" placeholder="e.g. BSIT2C">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="cancel-btn" onclick="closeModal()">CLOSE</button>
+                <button class="save-btn" onclick="saveSubject()">SAVE</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Adjust modal on window resize
+        window.addEventListener('resize', function() {
+            const modal = document.getElementById('subject-modal');
+            if (modal.classList.contains('show')) {
+                // Ensure the modal is properly positioned and sized
+                const modalContent = modal.querySelector('.modal-content');
+                modalContent.style.maxHeight = (window.innerHeight * 0.9) + 'px';
+            }
+        });
+        
+        // Initialize empty subjects array
+        let subjects = [];
+        let editIndex = -1; // -1 means adding new, otherwise editing existing
+        let enrollmentStatus = "none"; // none, inprogress, complete
+    </script>
+
+    <script>
+        // Function to open modal for adding a new subject
+        function openAddModal() {
+            document.querySelector(".modal-title").innerText = "Add New Subject";
+            document.getElementById("subject-form").reset();
+            editIndex = -1;
+            document.getElementById("subject-modal").classList.add("show");
+        }
+        
+        // Function to open modal for editing a subject
+        function openEditModal(index) {
+            document.querySelector(".modal-title").innerText = "Edit Subject";
+            const subject = subjects[index];
+            
+            document.getElementById("subject-id").value = subject.id;
+            document.getElementById("subject-desc").value = subject.description;
+            document.getElementById("subject-type").value = subject.type;
+            document.getElementById("subject-units").value = subject.units;
+            document.getElementById("subject-day").value = subject.day;
+            document.getElementById("subject-start-time").value = subject.startTime;
+            document.getElementById("subject-end-time").value = subject.endTime;
+            document.getElementById("subject-instructor").value = subject.instructor;
+            document.getElementById("subject-section").value = subject.section;
+            
+            editIndex = index;
+            document.getElementById("subject-modal").classList.add("show");
+        }
+        
+        // Function to close the modal
+        function closeModal() {
+            document.getElementById("subject-modal").classList.remove("show");
+        }
+        
+        // Function to save a subject (add new or update existing)
+        function saveSubject() {
+            const newSubject = {
+                id: document.getElementById("subject-id").value,
+                description: document.getElementById("subject-desc").value,
+                type: document.getElementById("subject-type").value,
+                units: parseFloat(document.getElementById("subject-units").value) || 0,
+                day: document.getElementById("subject-day").value,
+                startTime: document.getElementById("subject-start-time").value,
+                endTime: document.getElementById("subject-end-time").value,
+                instructor: document.getElementById("subject-instructor").value,
+                section: document.getElementById("subject-section").value
+            };
+            
+            if (editIndex === -1) {
+                // Add new subject
+                subjects.push(newSubject);
+            } else {
+                // Update existing subject
+                subjects[editIndex] = newSubject;
+            }
+            
+            renderSubjects();
+            closeModal();
+            updateTotalUnits();
+        }
+        
+        // Function to delete a subject
+        function deleteSubject(index) {
+            if (confirm("Are you sure you want to delete this subject?")) {
+                subjects.splice(index, 1);
+                renderSubjects();
+                updateTotalUnits();
+            }
+        }
+        
+        // Function to render all subjects
+        function renderSubjects() {
+    const tbody = document.getElementById("subject-list");
+    const emptyState = document.querySelector(".empty-state");
+    const enrollBtn = document.getElementById("enroll-btn"); // NEW
+
+    // Clear current list
+    tbody.innerHTML = "";
+
+    // Show empty state if no subjects
+    if (subjects.length === 0) {
+        emptyState.style.display = "block";
+        enrollBtn.style.display = "none"; // Hide enroll button if no subjects
+    } else {
+        emptyState.style.display = "none";
+        enrollBtn.style.display = "flex"; // Show enroll button if subjects exist
+
+        // Add all subjects
+        subjects.forEach((subject, index) => {
+            const tr = document.createElement("tr");
+
+            const startTime = formatTime(subject.startTime);
+            const endTime = formatTime(subject.endTime);
+
+            let typeBadge = "";
+            if (subject.type === "lab") {
+                typeBadge = '<span class="badge lab">LAB</span>';
+            } else if (subject.type === "lec") {
+                typeBadge = '<span class="badge lec">LEC</span>';
+            }
+
+            tr.innerHTML = `
+                <td class="course-code">${subject.id}</td>
+                <td>${subject.description} ${typeBadge}</td>
+                <td>${subject.units.toFixed(2)}</td>
+                <td class="schedule-time">${subject.day}<br>${startTime} - ${endTime}</td>
+                <td>${subject.instructor}</td>
+                <td>${subject.section}</td>
+                <td><img class="remove-icon" src="../images/x-icon.png" alt="Remove" onclick="deleteSubject(${index})"></td>
+            `;
+
+            tbody.appendChild(tr);
+        });
+    }
+}
+
+        function enrollSubjects() {
+    const enrollBtn = document.getElementById("enroll-btn");
+
+    // Update button appearance and state
+    enrollBtn.textContent = "WAITING FOR APPROVAL...";
+    enrollBtn.disabled = true;
+    enrollBtn.style.opacity = "0.6";
+    enrollBtn.style.cursor = "not-allowed";
+
+    // Optionally update status somewhere visually
+    updateEnrollmentStatus("inprogress");
+}
+ 
+        // Function to format time (24h to 12h format)
+        function formatTime(time) {
+            if (!time) return "";
+            
+            const [hours, minutes] = time.split(":");
+            let hour = parseInt(hours);
+            const ampm = hour >= 12 ? "PM" : "AM";
+            
+            hour = hour % 12;
+            hour = hour ? hour : 12; // 0 should be 12
+            
+            return `${hour}:${minutes}${ampm}`;
+        }
+        
+        //para ma calculate yung total units
+        function updateTotalUnits() {
+            const total = subjects.reduce((sum, subject) => sum + subject.units, 0);
+            document.querySelector(".units-value").innerText = total.toFixed(2);
+        }
+        
+        //nababaliw na akoooo
+        renderSubjects();
+        updateTotalUnits();
+        
+        //tabs
+        document.querySelectorAll(".filter-btn").forEach(btn => {
+            btn.addEventListener("click", function() {
+                document.querySelector(".filter-btn.active").classList.remove("active");
+                this.classList.add("active");
+            });
+        });
+        
+        //nav items
+        document.querySelectorAll(".nav-item").forEach(item => {
+            item.addEventListener("click", function() {
+                document.querySelector(".nav-item.active").classList.remove("active");
+                this.classList.add("active");
+            });
+        });
+    </script>
+
+    <script src="../js/logout.js"></script>
+    
+</body>
+</html>

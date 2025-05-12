@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>WMSU INSTRUCTOR PORTAL - MANAGE ENROLLMENTS</title>
+  <link rel="stylesheet" href="../css/header-infocard.css" />
+  <style>
+    /* Styles unchanged from your previous version, except modal styles removed */
+
+    .content-section {
+      flex: 1;
+      padding: 25px;
+      background: white;
+    }
+
+    .tabs {
+      display: flex;
+      margin-bottom: 20px;
+      border-bottom: 1px solid #ccc;
+    }
+
+    .tab {
+      padding: 10px 15px;
+      cursor: pointer;
+      font-weight: bold;
+      color: #666;
+      position: relative;
+    }
+
+    .tab.active {
+      color: #c41e3a;
+      border-bottom: 3px solid #c41e3a;
+    }
+
+    .filters {
+      background: white;
+      padding: 20px;
+      border-radius: 5px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+      margin-bottom: 20px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      align-items: center;
+    }
+
+    .filter-group {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .filter-label {
+      font-weight: bold;
+      color: #333;
+    }
+
+    select, input {
+      padding: 8px 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 14px;
+    }
+
+    .filter-buttons {
+      margin-left: auto;
+      display: flex;
+      gap: 10px;
+    }
+
+    .apply-btn {
+      background-color: #c41e3a;
+      color: white;
+      border: none;
+      padding: 8px 15px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .apply-btn:hover {
+      background-color: #a51a30;
+    }
+
+    .student-list-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 15px;
+    }
+
+    .enrollment-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .enrollment-table th,
+    .enrollment-table td {
+      padding: 12px 10px;
+      border-bottom: 1px solid #ddd;
+      font-size: 14px;
+      text-align: left;
+    }
+
+    .enrollment-table th {
+      background-color: #f5f5f5;
+      color: #333;
+    }
+
+    .action-btn {
+      background: none;
+      border: none;
+      padding: 0;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .action-btn img {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+    }
+
+    .action-btn:hover {
+      transform: scale(1.1);
+    }
+
+    .empty-state {
+      padding: 40px;
+      text-align: center;
+      border: 2px dashed #ddd;
+      border-radius: 8px;
+      margin: 20px 0;
+      display: none;
+    }
+
+    .empty-state-text {
+      color: #999;
+      margin-bottom: 15px;
+      font-size: 16px;
+    }
+
+    .student-name-span {
+      color: black;
+      text-decoration: none;
+    }
+
+    .student-name-span:hover {
+      cursor: pointer;
+      text-decoration: underline;
+    }
+
+    @media (max-width: 900px) {
+      .main-content {
+        flex-direction: column;
+      }
+
+      .profile-section {
+        width: 100%;
+        border-right: none;
+        border-bottom: 1px solid #eee;
+        padding-bottom: 15px;
+      }
+
+      .filters {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .filter-group {
+        width: 100%;
+      }
+
+      .enrollment-table-container {
+        overflow-x: auto;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <div class="logo">
+      <img src="../images/seal.jfif" alt="WMSU SEAL">
+      <div>
+        <div class="university-name">WESTERN MINDANAO STATE UNIVERSITY</div>
+        <div class="location">ZAMBOANGA CITY</div>
+      </div>
+    </div>
+    <div class="system-name">INSTRUCTOR PORTAL</div>
+  </div>
+
+  <div class="main-content">
+    <div class="profile-section">
+      <div class="profile-pic">
+        <img src="../images/profile-placeholder.png" alt="PROFILE PIC">
+      </div>
+      <div class="student-name">MS. AMANI UPAO URI</div>
+      <div class="student-id">2023-02456</div>
+
+      <div class="student-info">
+        <div class="info-item">
+          <div class="info-label">Email:</div>
+          <div class="info-value">WTF@GMAIL.COM</div>
+        </div>
+        <div class="info-item">
+          <div class="info-label">College:</div>
+          <div class="info-value">COLLEGE OF COMPUTING STUDIES</div>
+        </div>
+        <div class="info-item">
+          <div class="info-label">Dept:</div>
+          <div class="info-value">INFORMATION TECHNOLOGY</div>
+        </div>
+      </div>
+
+      <div class="side-nav">
+        <div class="nav-item">
+          <a href="instructor-main.html">SECTIONS</a>
+        </div>
+        <div class="nav-item active">
+          <a href="manage-enrollments.html">MANAGE ENROLLMENTS</a>
+        </div>
+        <div class="nav-item">
+          <a href="#">GRADING</a>
+        </div>
+        <div class="nav-item">
+          <a href="../login/i.login.html" class="logout-btn" onclick="return confirmLogout()">LOG OUT</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="content-section">
+      <div class="tabs">
+        <div class="tab active" data-tab="pending">PENDING</div>
+        <div class="tab" data-tab="completed">COMPLETED</div>
+      </div>
+
+      <div class="filters">
+        <div class="filter-group">
+          <div class="filter-label">COURSE:</div>
+          <select id="course-filter">
+            <option value="all">ALL</option>
+            <option value="BSIT">BSIT</option>
+            <option value="BSN">BSN</option>
+            <option value="BSED">BSED</option>
+            <option value="BSBA">BSBA</option>
+          </select>
+        </div>
+        <div class="filter-group">
+          <div class="filter-label">YEAR LEVEL:</div>
+          <select id="year-filter">
+            <option value="all">ALL</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+          </select>
+        </div>
+        <div class="filter-buttons">
+          <button class="apply-btn" id="apply-filters-btn">APPLY</button>
+          <button class="apply-btn" id="clear-filters-btn" style="background-color: #919191;">CLEAR</button>
+        </div>
+      </div>
+
+      <div class="enrollment-table-container">
+        <table class="enrollment-table">
+          <thead>
+            <tr>
+              <th>STUDENT ID</th>
+              <th>NAME</th>
+              <th>EMAIL</th>
+              <th>COURSE</th>
+              <th>YEAR LEVEL</th>
+              <th id="actions-header">ACTIONS</th>
+            </tr>
+          </thead>
+          <tbody id="student-list"></tbody>
+        </table>
+        <div class="empty-state" id="empty-state">
+          <div class="empty-state-text">No data to be displayed...</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    let students = [
+      { id: '2023-01234', name: 'JOHN DOE', email: 'JOHNDOE@WMSU.EDU.PH', course: 'BSIT', yearLevel: '1', status: 'PENDING' },
+      { id: '2023-01235', name: 'JANE SMITH', email: 'JANESMITH@WMSU.EDU.PH', course: 'BSN', yearLevel: '2', status: 'COMPLETED' },
+      { id: '2023-01236', name: 'ROBERT JOHNSON', email: 'ROBERTJ@WMSU.EDU.PH', course: 'BSED', yearLevel: '3', status: 'PENDING' },
+      { id: '2023-01237', name: 'MARIA GARCIA', email: 'MARIAG@WMSU.EDU.PH', course: 'BSBA', yearLevel: '2', status: 'COMPLETED' },
+    ];
+
+    const studentList = document.getElementById('student-list');
+    const emptyState = document.getElementById('empty-state');
+    const courseFilter = document.getElementById('course-filter');
+    const yearFilter = document.getElementById('year-filter');
+    const applyFiltersBtn = document.getElementById('apply-filters-btn');
+    const actionsHeader = document.getElementById('actions-header');
+    const tabs = document.querySelectorAll('.tab');
+    let currentTab = 'pending';
+
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        tabs.forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+        currentTab = tab.dataset.tab;
+        renderStudentsByTab();
+      });
+    });
+
+    function renderStudentsByTab() {
+      let filteredStudents = students.filter(student => student.status.toLowerCase() === currentTab);
+
+      const course = courseFilter.value;
+      const year = yearFilter.value;
+
+      if (course !== 'all') {
+        filteredStudents = filteredStudents.filter(s => s.course === course);
+      }
+
+      if (year !== 'all') {
+        filteredStudents = filteredStudents.filter(s => s.yearLevel === year);
+      }
+
+      renderStudents(filteredStudents);
+    }
+
+    function renderStudents(filteredStudents) {
+      studentList.innerHTML = '';
+      emptyState.style.display = filteredStudents.length === 0 ? 'block' : 'none';
+
+      actionsHeader.style.display = currentTab === 'pending' ? 'table-cell' : 'none';
+
+      filteredStudents.forEach(student => {
+        const profilePage = student.status.toLowerCase() === 'pending' ? 'pending.html' : 'completed.html';
+        const row = document.createElement('tr');
+        row.innerHTML = `
+          <td>${student.id}</td>
+          <td><a class="student-name-span" href="${profilePage}?id=${student.id}">${student.name}</a></td>
+          <td>${student.email}</td>
+          <td>${student.course}</td>
+          <td>${student.yearLevel}</td>
+          ${currentTab === 'pending' ? `
+            <td>
+              <button class="action-btn approve-btn" data-id="${student.id}">
+                <img src="../images/check-icon.png" alt="Approve">
+              </button>
+              <button class="action-btn reject-btn" data-id="${student.id}">
+                <img src="../images/x-icon.png" alt="Reject">
+              </button>
+            </td>
+          ` : `<td style="display: none;"></td>`}
+        `;
+        studentList.appendChild(row);
+      });
+
+      document.querySelectorAll('.approve-btn').forEach(btn => {
+        btn.addEventListener('click', () => approveEnrollment(btn.dataset.id));
+      });
+
+      document.querySelectorAll('.reject-btn').forEach(btn => {
+        btn.addEventListener('click', () => rejectEnrollment(btn.dataset.id));
+      });
+    }
+
+    function applyFilters() {
+      renderStudentsByTab();
+    }
+
+    function clearFilters() {
+      courseFilter.value = 'all';
+      yearFilter.value = 'all';
+      renderStudentsByTab();
+    }
+
+    function approveEnrollment(id) {
+      const student = students.find(s => s.id === id);
+      if (!student) return;
+
+      if (confirm(`APPROVE ENROLLMENT FOR ${student.name}?`)) {
+        student.status = 'COMPLETED';
+        renderStudentsByTab();
+      }
+    }
+
+    function rejectEnrollment(id) {
+      if (confirm(`REJECT ENROLLMENT?`)) {
+        students = students.filter(s => s.id !== id);
+        renderStudentsByTab();
+      }
+    }
+
+    applyFiltersBtn.addEventListener('click', applyFilters);
+    document.getElementById('clear-filters-btn').addEventListener('click', clearFilters);
+
+    renderStudentsByTab();
+  </script>
+
+  <script src="../js/logout.js"></script>
+</body>
+</html>
