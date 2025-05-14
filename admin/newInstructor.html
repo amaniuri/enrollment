@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>WMSU Student Portal</title>
+  <link rel="stylesheet" href="../css/header-infocard.css" />
+  <style>
+    p {
+      margin: 0;
+      text-align: center;
+      padding-bottom: 10px;
+      font-size: 14px;
+    }
+
+    .main-content {
+      display: flex;
+    }
+
+    .form-container {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px 20px;
+    }
+
+    .form-wrapper {
+      background-color: #fff;
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      width: 90%;
+    }
+
+    .form-wrapper h1 {
+      margin-bottom: 25px;
+      text-align: center;
+      color: #b30000;
+    }
+
+    label {
+      display: block;
+      margin-top: 15px;
+      font-weight: bold;
+      color: #333;
+    }
+
+    input,
+    select {
+      width: 100%;
+      padding: 10px;
+      margin-top: 6px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      font-size: 16px;
+    }
+
+    .form-buttons {
+      display: flex;
+      justify-content: flex-end;
+      margin-top: 30px;
+      gap: 10px;
+    }
+
+    .submit-btn {
+      background-color: #b30000;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      padding: 12px 20px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.2s ease;
+    }
+
+    .submit-btn:hover {
+      background-color: #900;
+    }
+
+    .cancel-btn {
+      background-color: #777;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      padding: 12px 20px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.2s ease;
+    }
+
+    .cancel-btn:hover {
+      background-color: #555;
+    }
+
+    @media (max-width: 800px) {
+      .main-content {
+        flex-direction: column;
+      }
+
+      .form-container {
+        padding: 20px;
+      }
+
+      .form-wrapper {
+        width: 100%;
+      }
+    }
+
+    @media (max-width: 900px) {
+      .main-content {
+        flex-direction: column;
+      }
+
+      .profile-section {
+        width: 100%;
+        border-right: none;
+        border-bottom: 1px solid #eee;
+        padding-bottom: 15px;
+      }
+
+      .form-container {
+        padding: 20px;
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <div class="logo">
+      <img src="../images/seal.jfif" alt="WMSU SEAL" />
+      <div>
+        <div class="university-name">WESTERN MINDANAO STATE UNIVERSITY</div>
+        <div class="location">Zamboanga City</div>
+      </div>
+    </div>
+    <div class="system-name">ADMIN PORTAL</div>
+  </div>
+
+  <div class="main-content">
+    <!-- Profile Sidebar -->
+    <div class="profile-section">
+      <div class="profile-pic">
+        <img src="../images/profile-placeholder.png" alt="PROFILE PIC" />
+      </div>
+      <div class="student-name">AMANI UPAO URI</div>
+      <div class="student-id">2023-02456</div>
+
+      <div class="student-info">
+        <div class="info-item">
+          <div class="info-label">Email:</div>
+          <div class="info-value">WTF@GMAIL.COM</div>
+        </div>
+      </div>
+
+      <div class="side-nav">
+        <div class="nav-item"><a href="admin-main.html">DASHBOARD</a></div>
+        <p>MANAGE:</p>
+        <div class="nav-item active"><a href="overviewStudent.html">USERS</a></div>
+        <div class="nav-item"><a href="overviewCourse.html">ACADS</a></div>
+        <div class="nav-item"><a href="#">GRADES</a></div>
+        <div class="nav-item">
+          <a href="../login/i.login.html" class="logout-btn" onclick="return confirmLogout()">LOG OUT</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Instructor Form -->
+    <div class="form-container">
+      <div class="form-wrapper">
+        <h1>Add New Instructor</h1>
+        <form id="userForm">
+          <label for="idNumber">INSTRUCTOR ID:</label>
+          <input type="text" id="idNumber" name="idNumber" placeholder="ID NUMBER" required />
+
+          <label>FULL NAME:</label>
+          <div style="display: flex; gap: 10px;">
+            <input type="text" name="firstName" placeholder="F.N." required style="flex: 1;" />
+            <input type="text" name="middleName" placeholder="M.N." required style="flex: 1;" />
+            <input type="text" name="lastName" placeholder="L.N." required style="flex: 1;" />
+          </div>
+
+          <label>ACCOUNT INFO:</label>
+          <div style="display: flex; gap: 10px;">
+            <input type="email" id="email" name="email" placeholder="EMAIL" required style="flex: 1;"/>
+            <input type="password" id="password" name="password" placeholder="PASSWORD" required style="flex: 1;"/>
+          </div>
+
+          <label for="college">COLLEGE::</label>
+          <select id="college" name="college" required>
+            <option value="">COLLEGE</option>
+            <option value="computing studies">COLLEGE OF COMPUTING STUDIES</option>
+            <option value="engineering">COLLEGE OF ENGINEERING</option>
+            <option value="architecture">COLLEGE OF ARCHITECTURE</option>
+          </select>
+
+          <label for="department">DEPT:</label>
+          <select id="department" name="department" required>
+            <option value="">DEPT</option>
+            <option value="information technology">INFORMATION TECHNOLOGY</option>
+            <option value="computing studies">COMPUTER SCIENCE</option>
+            <option value="mechanical engineering">MECHANICAL ENGINEERING</option>
+            <option value="electrical engineering">ELECTRICAL ENGINEERING</option>
+          </select>
+
+          <div class="form-buttons">
+            <button type="submit" class="submit-btn">Add</button>
+            <button type="button" class="cancel-btn" onclick="confirmCancel()">Cancel</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function confirmCancel() {
+      if (confirm("Are you sure you want to cancel? This will clear the form.")) {
+        document.getElementById("userForm").reset();
+      }
+    }
+
+    document.getElementById("userForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+      alert("Instructor registered!");
+      this.reset();
+    });
+  </script>
+  <script src="../js/logout.js"></script>
+</body>
+</html>
+

@@ -3,66 +3,113 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WMSU Student Portal</title>
+    <title>WMSU ADMIN PORTAL</title>
     <link rel="stylesheet" href="../css/header-infocard.css">
 
     <style>
-        .schedule-section {
-            flex: 1;
-            padding: 25px;
-            background: white;
-        }
-            
-        .schedule-table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-        
-        .schedule-table th {
-            padding: 12px 10px;
-            text-align: left;
-            color: #5778FF;
-            font-size: 12px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            font-weight: 600;
-            border-bottom: 1px solid #919191;
-        }
-        
-        .schedule-table td {
-            padding: 8px 10px;
-            font-size: 13px;
-            border-bottom: 1px solid #919191;
-        }    
-        
-        .empty-state {
-            padding: 40px;
+        p {
+            margin: 0;
             text-align: center;
-            border: 2px dashed #ddd;
-            border-radius: 8px;
-            margin: 20px 0;
+            padding-bottom: 10px;
+            font-size: 14px;
         }
-        
-        .empty-state-text {
-            color: #999;
-            margin-bottom: 15px;
-            font-size: 16px;
+
+        .main-content {
+            display: flex;
         }
+
+        /* Dashboard Container */
+        .dashboard-container {
+            flex: 1;
+            padding: 30px 150px;
+        }
+        h3 {
+            padding-bottom: 20px;
+        }
+
+.dashboard-row {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.dashboard-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.dashboard-box {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    padding: 20px;
+    width: 250px;
+    text-align: center;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    transition: transform 0.2s ease;
+}
+
+.dashboard-box:hover {
+    transform: translateY(-5px);
+}
+
+.dashboard-box h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.dashboard-box .count {
+    font-size: 32px;
+    font-weight: bold;
+    color: #d22;
+    margin-bottom: 5px;
+}
+
+.add-btn {
+    margin-top: 10px;
+    background-color: #d22;
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    padding: 8px 14px;
+    font-size: 20px;
+    cursor: pointer;
+    font-weight: normal;
+}
+
+.add-btn:hover {
+    background-color: #a00;
+    transform: scale(1.1);
+}
+
 
         @media (max-width: 900px) {
             .main-content {
                 flex-direction: column;
             }
-            
+
             .profile-section {
                 width: 100%;
                 border-right: none;
                 border-bottom: 1px solid #eee;
                 padding-bottom: 15px;
             }
-            
-            .schedule-table-container {
-                overflow-x: auto;
+
+            .dashboard-row {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .dashboard-box {
+                width: 100%;
+                margin-bottom: 10px;
+            }
+
+            .add-btn {
+                margin-top: 10px;
             }
         }
     </style>
@@ -80,11 +127,12 @@
     </div>
     
     <div class="main-content">
+        <!-- Profile Sidebar -->
         <div class="profile-section">
             <div class="profile-pic">
                 <img src="../images/profile-placeholder.png" alt="PROFILE PIC">
             </div>
-            <div class="student-name">MS. AMANI UPAO URI</div>
+            <div class="student-name">AMANI UPAO URI</div>
             <div class="student-id">2023-02456</div>
             
             <div class="student-info">
@@ -96,13 +144,14 @@
             
             <div class="side-nav">
                 <div class="nav-item active">
-                    <a href="#">DASHBOARD</a>
+                    <a href="admin-main.html">DASHBOARD</a>
+                </div>
+                <p>MANAGE:</p>
+                <div class="nav-item">
+                    <a href="overviewStudent.html">USERS</a>
                 </div>
                 <div class="nav-item">
-                    <a href="#">USER MANAGEMENT</a>
-                </div>
-                <div class="nav-item">
-                    <a href="#">ACADS MANAGEMENT</a>
+                    <a href="overviewCourse.html">ACADS</a>
                 </div>
                 <div class="nav-item">
                     <a href="#">GRADES</a>
@@ -111,38 +160,68 @@
                     <a href="../login/i.login.html" class="logout-btn" onclick="return confirmLogout()">LOG OUT</a>
                 </div>
             </div>
-            
         </div>
-        
-        <div class="schedule-section active">
-            
-            <div class="schedule-table-container">
-                <table class="schedule-table">
-                    <thead>
-                        <tr>
-                            <th>SUBJECT ID</th>
-                            <th>DESCRIPTION</th>
-                            <th>UNITS</th>
-                            <th>SCHEDULE</th>
-                            <th>SECTION</th>
-                        </tr>
-                    </thead>
-                    <tbody id="subject-list">
-                        <!-- Subject list will be populated dynamically -->
-                    </tbody>
-                </table>
-                
-                <!-- Empty state (shown when there are no subjects) -->
-                <div class="empty-state" id="empty-state">
-                    <div class="empty-state-text">Empty...</div>
+
+        <div class="dashboard-container">
+            <h1>SYSTEM OVERVIEW</h1>
+            <br></br>
+            <h3>USER COUNT:</h3>
+            <div class="dashboard-row">
+                <div class="dashboard-item">
+                    <div class="dashboard-box">
+                        <h3>TOTAL STUDENTS</h3>
+                        <div class="count" id="studentCount">120</div>
+                    </div>
+                    <button class="add-btn" onclick="window.location.href='newStudent.html'">+</button>
                 </div>
 
+                <div class="dashboard-item">
+                    <div class="dashboard-box">
+                        <h3>TOTAL INSTRUCTORS</h3>
+                        <div class="count" id="instructorCount">18</div>
+                    </div>
+                    <button class="add-btn" onclick="window.location.href='newInstructor.html'">+</button>
+                </div>
+
+                <div class="dashboard-item">
+                    <div class="dashboard-box">
+                        <h3>TOTAL ADMIN</h3>
+                        <div class="count" id="adminCount">4</div>
+                    </div>
+                    <button class="add-btn" onclick="window.location.href='newAdmin.html'">+</button>
+                </div>
             </div>
-            
+            <br></br>
+            <h3>ACADEMIC COUNT:</h3>
+            <div class="dashboard-row">
+                <div class="dashboard-item">
+                    <div class="dashboard-box">
+                        <h3>TOTAL COURSES</h3>
+                        <div class="count" id="coursesCount">10</div>
+                    </div>
+                    <button class="add-btn" onclick="window.location.href='newCourse.html'">+</button>
+                </div>
+
+                <div class="dashboard-item">
+                    <div class="dashboard-box">
+                        <h3>TOTAL SECTIONS</h3>
+                        <div class="count" id="sectionCount">100</div>
+                    </div>
+                    <button class="add-btn" onclick="window.location.href='newSection.html'">+</button>
+                </div>
+
+                <div class="dashboard-item">
+                    <div class="dashboard-box">
+                        <h3>TOTAL SUBJECTS</h3>
+                        <div class="count" id="subjectCount">420</div>
+                    </div>
+                    <button class="add-btn" onclick="window.location.href='newSubject.html'">+</button>
+                </div>
+            </div>
         </div>
+
     </div>
 
     <script src="../js/logout.js"></script>
-
 </body>
 </html>
