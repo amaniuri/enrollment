@@ -4,117 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WMSU ADMIN PORTAL</title>
-    <link rel="stylesheet" href="../css/header-infocard.css">
-
-    <style>
-        p {
-            margin: 0;
-            text-align: center;
-            padding-bottom: 10px;
-            font-size: 14px;
-        }
-
-        .main-content {
-            display: flex;
-        }
-
-        /* Dashboard Container */
-        .dashboard-container {
-            flex: 1;
-            padding: 30px 150px;
-        }
-        h3 {
-            padding-bottom: 20px;
-        }
-
-.dashboard-row {
-    display: flex;
-    justify-content: center;
-    gap: 30px;
-    flex-wrap: wrap;
-}
-
-.dashboard-item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.dashboard-box {
-    background-color: #fff;
-    border: 1px solid #ddd;
-    border-radius: 12px;
-    padding: 20px;
-    width: 250px;
-    text-align: center;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-    transition: transform 0.2s ease;
-}
-
-.dashboard-box:hover {
-    transform: translateY(-5px);
-}
-
-.dashboard-box h3 {
-    font-size: 18px;
-    margin-bottom: 10px;
-    color: #333;
-}
-
-.dashboard-box .count {
-    font-size: 32px;
-    font-weight: bold;
-    color: #d22;
-    margin-bottom: 5px;
-}
-
-.add-btn {
-    margin-top: 10px;
-    background-color: #d22;
-    color: #fff;
-    border: none;
-    border-radius: 50%;
-    padding: 8px 14px;
-    font-size: 20px;
-    cursor: pointer;
-    font-weight: normal;
-}
-
-.add-btn:hover {
-    background-color: #a00;
-    transform: scale(1.1);
-}
-
-
-        @media (max-width: 900px) {
-            .main-content {
-                flex-direction: column;
-            }
-
-            .profile-section {
-                width: 100%;
-                border-right: none;
-                border-bottom: 1px solid #eee;
-                padding-bottom: 15px;
-            }
-
-            .dashboard-row {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-
-            .dashboard-box {
-                width: 100%;
-                margin-bottom: 10px;
-            }
-
-            .add-btn {
-                margin-top: 10px;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="../css/Style.css">
 </head>
+
 <body>
+    <!-- HEADER -->
     <div class="header">
         <div class="logo">
             <img src="../images/seal.jfif" alt="WMSU SEAL">
@@ -125,23 +19,21 @@
         </div>
         <div class="system-name">ADMIN PORTAL</div>
     </div>
-    
     <div class="main-content">
-        <!-- Profile Sidebar -->
+        <!-- USER INFO CARD -->
         <div class="profile-section">
             <div class="profile-pic">
                 <img src="../images/profile-placeholder.png" alt="PROFILE PIC">
             </div>
-            <div class="student-name">AMANI UPAO URI</div>
-            <div class="student-id">2023-02456</div>
-            
-            <div class="student-info">
+            <div class="user-name">AMANI UPAO URI</div>
+            <div class="user-id">2023-02456</div>
+            <div class="user-info">
                 <div class="info-item">
                     <div class="info-label">Email:</div>
                     <div class="info-value">WTF@GMAIL.COM</div>
                 </div>
             </div>
-            
+            <!-- NAV -->
             <div class="side-nav">
                 <div class="nav-item active">
                     <a href="admin-main.html">DASHBOARD</a>
@@ -151,7 +43,7 @@
                     <a href="overviewStudent.html">USERS</a>
                 </div>
                 <div class="nav-item">
-                    <a href="overviewCourse.html">ACADS</a>
+                    <a href="overviewAcads.html">ACADS</a>
                 </div>
                 <div class="nav-item">
                     <a href="#">GRADES</a>
@@ -161,7 +53,6 @@
                 </div>
             </div>
         </div>
-
         <div class="dashboard-container">
             <h1>SYSTEM OVERVIEW</h1>
             <br></br>
@@ -172,23 +63,21 @@
                         <h3>TOTAL STUDENTS</h3>
                         <div class="count" id="studentCount">120</div>
                     </div>
-                    <button class="add-btn" onclick="window.location.href='newStudent.html'">+</button>
+                    <button class="adminAdd" onclick="window.location.href='newUser.html'">+</button>
                 </div>
-
                 <div class="dashboard-item">
                     <div class="dashboard-box">
                         <h3>TOTAL INSTRUCTORS</h3>
                         <div class="count" id="instructorCount">18</div>
                     </div>
-                    <button class="add-btn" onclick="window.location.href='newInstructor.html'">+</button>
+                    <button class="adminAdd" onclick="window.location.href='newUser.html'">+</button>
                 </div>
-
                 <div class="dashboard-item">
                     <div class="dashboard-box">
                         <h3>TOTAL ADMIN</h3>
                         <div class="count" id="adminCount">4</div>
                     </div>
-                    <button class="add-btn" onclick="window.location.href='newAdmin.html'">+</button>
+                    <button class="adminAdd" onclick="window.location.href='newUser.html'">+</button>
                 </div>
             </div>
             <br></br>
@@ -199,29 +88,27 @@
                         <h3>TOTAL COURSES</h3>
                         <div class="count" id="coursesCount">10</div>
                     </div>
-                    <button class="add-btn" onclick="window.location.href='newCourse.html'">+</button>
+                    <button class="adminAdd" onclick="window.location.href='newAcad.html'">+</button>
                 </div>
-
                 <div class="dashboard-item">
                     <div class="dashboard-box">
                         <h3>TOTAL SECTIONS</h3>
                         <div class="count" id="sectionCount">100</div>
                     </div>
-                    <button class="add-btn" onclick="window.location.href='newSection.html'">+</button>
+                    <button class="adminAdd" onclick="window.location.href='newAcad.html'">+</button>
                 </div>
-
                 <div class="dashboard-item">
                     <div class="dashboard-box">
                         <h3>TOTAL SUBJECTS</h3>
                         <div class="count" id="subjectCount">420</div>
                     </div>
-                    <button class="add-btn" onclick="window.location.href='newSubject.html'">+</button>
+                    <button class="adminAdd" onclick="window.location.href='newAcad.html'">+</button>
                 </div>
             </div>
         </div>
-
     </div>
 
     <script src="../js/logout.js"></script>
+    
 </body>
 </html>

@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WMSU ADMIN PORTAL</title>
+    <link rel="stylesheet" href="../css/Style.css">
+</head>
+
+<body>
+    <!-- HEADER -->
+    <div class="header">
+        <div class="logo">
+            <img src="../images/seal.jfif" alt="WMSU SEAL">
+            <div>
+                <div class="university-name">WESTERN MINDANAO STATE UNIVERSITY</div>
+                <div class="location">Zamboanga City</div>
+            </div>
+        </div>
+        <div class="system-name">ADMIN PORTAL</div>
+    </div>
+    <div class="main-content">
+        <!-- USER INFO CARD -->
+        <div class="profile-section">
+            <div class="profile-pic">
+                <img src="../images/profile-placeholder.png" alt="PROFILE PIC">
+            </div>
+            <div class="user-name">AMANI UPAO URI</div>
+            <div class="user-id">2023-02456</div>
+            <div class="user-info">
+                <div class="info-item">
+                    <div class="info-label">Email:</div>
+                    <div class="info-value">WTF@GMAIL.COM</div>
+                </div>
+            </div>
+            <!-- NAV -->
+            <div class="side-nav">
+                <div class="nav-item">
+                    <a href="admin-main.html">DASHBOARD</a>
+                </div>
+                <p>MANAGE:</p>
+                <div class="nav-item">
+                    <a href="overviewStudent.html">USERS</a>
+                </div>
+                <div class="nav-item active">
+                    <a href="overviewAcads.html">ACADS</a>
+                </div>
+                <div class="nav-item">
+                    <a href="#">GRADES</a>
+                </div>
+                <div class="nav-item">
+                    <a href="../login/i.login.html" class="logout-btn" onclick="return confirmLogout()">LOG OUT</a>
+                </div>
+            </div>
+        </div>
+        <div class="content-section">
+            <div class="tabs">
+                <div class="tab active" id="tab-courses">COURSES</div>
+                <div class="tab" id="tab-sections">SECTIONS</div>
+                <div class="tab" id="tab-subjects">SUBJECTS</div>
+            </div>
+            <div class="top-controls">
+                <div class="search-bar">
+                    <input type="text" id="search-input" placeholder="SEARCH..." />
+                </div>
+                <button class="addUser-btn" onclick="location.href='newAcad.html'">+</button>
+            </div>
+            <div class="enrollment-table-container">
+                <table class="enrollment-table">
+                    <thead id="table-head"></thead>
+                    <tbody id="student-list"></tbody>
+                </table>
+                <div class="empty-state" id="empty-state">
+                    <div class="empty-state-text">No data to be displayed...</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+    const courses = [
+        { id: '2023-01234', name: 'IT', college: 'CCS', totalStudents: '92' },
+        { id: '2023-01235', name: 'CS', college: 'CCS', totalStudents: '90' },
+        { id: '2023-01236', name: 'ME', college: 'COE', totalStudents: '120' },
+        { id: '2023-01237', name: 'HM', college: 'CHM', totalStudents: '107' },
+    ];
+
+    const sections = [
+        { college: 'CCS', course: 'Information Technology', yearLevel: '3', section: 'IT-3A' },
+        { college: 'CCS', course: 'Computer Science', yearLevel: '2', section: 'CS-2B' },
+        { college: 'COE', course: 'Mechanical Engineering', yearLevel: '4', section: 'ME-4C' },
+        { college: 'CHM', course: 'Hospitality Management', yearLevel: '1', section: 'HM-1A' }
+    ];
+
+    const subjects = [
+        {subjectId: 'IT101', description: 'Introduction to Computing', college: 'CCS', course: 'Information Technology', section: 'IT-1A', schedule: 'Mon/Wed 9:00AM - 10:30AM'},
+        {subjectId: 'CS202', description: 'Data Structures', college: 'CCS', course: 'Computer Science', section: 'CS-2B', schedule: 'Tue/Thu 1:00PM - 2:30PM'},
+        {subjectId: 'HM101', description: 'Hospitality Fundamentals', college: 'CHM', course: 'Hospitality Management', section: 'HM-1A', schedule: 'Wed/Sat 8:00AM - 9:30AM'}
+    ];
+
+    const tableHead = document.getElementById('table-head');
+    const studentList = document.getElementById('student-list');
+    const searchInput = document.getElementById('search-input');
+    const emptyState = document.getElementById('empty-state');
+
+    function renderCourses(data) {
+        tableHead.innerHTML = `<tr><th>COURSE ID</th><th>COURSE NAME</th><th>COLLEGE</th><th>TOTAL NUMBER OF STUDENTS</th></tr>`;
+        studentList.innerHTML = '';
+        emptyState.style.display = data.length === 0 ? 'block' : 'none';
+        data.forEach(student => {
+            studentList.innerHTML += `<tr><td>${student.id}</td><td>${student.name}</td><td>${student.college}</td><td>${student.totalStudents}</td></tr>`;
+        });
+    }
+
+    function renderSections(data) {
+        tableHead.innerHTML = `<tr><th>COLLEGE</th><th>COURSE</th><th>YEAR LEVEL</th><th>SECTION</th></tr>`;
+        studentList.innerHTML = '';
+        emptyState.style.display = data.length === 0 ? 'block' : 'none';
+        data.forEach(student => {
+            studentList.innerHTML += `<tr><td>${student.college}</td><td>${student.course}</td><td>${student.yearLevel}</td><td>${student.section}</td></tr>`;
+        });
+    }
+
+    function renderSubjects(data) {
+        tableHead.innerHTML = `<tr><th>SUBJECT ID</th><th>DESCRIPTION</th><th>COLLEGE</th><th>COURSE</th><th>SECTION</th><th>SCHEDULE</th></tr>`;
+        studentList.innerHTML = '';
+        emptyState.style.display = data.length === 0 ? 'block' : 'none';
+        data.forEach(subject => {
+            studentList.innerHTML += `<tr><td>${subject.subjectId}</td><td>${subject.description}</td><td>${subject.college}</td><td>${subject.course}</td><td>${subject.section}</td><td>${subject.schedule}</td></tr>`;
+        });
+    }
+
+    function handleSearch(dataSet, renderFn) {
+        const keyword = searchInput.value.toLowerCase();
+        const filtered = dataSet.filter(item => JSON.stringify(item).toLowerCase().includes(keyword));
+        renderFn(filtered);
+    }
+
+    document.getElementById('tab-courses').addEventListener('click', () => {
+        setActiveTab('tab-courses');
+        renderCourses(courses);
+        searchInput.oninput = () => handleSearch(courses, renderCourses);
+    });
+
+    document.getElementById('tab-sections').addEventListener('click', () => {
+        setActiveTab('tab-sections');
+        renderSections(sections);
+        searchInput.oninput = () => handleSearch(sections, renderSections);
+    });
+
+    document.getElementById('tab-subjects').addEventListener('click', () => {
+        setActiveTab('tab-subjects');
+        renderSubjects(subjects);
+        searchInput.oninput = () => handleSearch(subjects, renderSubjects);
+    });
+
+    function setActiveTab(tabId) {
+        document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+        document.getElementById(tabId).classList.add('active');
+    }
+
+    renderCourses(courses);
+    searchInput.oninput = () => handleSearch(courses, renderCourses);
+    </script>
+
+    <script src="../js/logout.js"></script>
+</body>
+</html>

@@ -3,71 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WMSU Student Portal</title>
-    <link rel="stylesheet" href="../css/header-infocard.css">
-
-    <style>
-        .schedule-section {
-            flex: 1;
-            padding: 25px;
-            background: white;
-        }
-            
-        .schedule-table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-        
-        .schedule-table th {
-            padding: 12px 10px;
-            text-align: left;
-            color: #5778FF;
-            font-size: 12px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            font-weight: 600;
-            border-bottom: 1px solid #919191;
-        }
-        
-        .schedule-table td {
-            padding: 8px 10px;
-            font-size: 13px;
-            border-bottom: 1px solid #919191;
-        }    
-        
-        .empty-state {
-            padding: 40px;
-            text-align: center;
-            border: 2px dashed #ddd;
-            border-radius: 8px;
-            margin: 20px 0;
-        }
-        
-        .empty-state-text {
-            color: #999;
-            margin-bottom: 15px;
-            font-size: 16px;
-        }
-
-        @media (max-width: 900px) {
-            .main-content {
-                flex-direction: column;
-            }
-            
-            .profile-section {
-                width: 100%;
-                border-right: none;
-                border-bottom: 1px solid #eee;
-                padding-bottom: 15px;
-            }
-            
-            .schedule-table-container {
-                overflow-x: auto;
-            }
-        }
-    </style>
+    <title>WMSU Instructor Portal</title>
+    <link rel="stylesheet" href="../css/Style.css">
 </head>
+
 <body>
+    <!-- HEADER -->
     <div class="header">
         <div class="logo">
             <img src="../images/seal.jfif" alt="WMSU SEAL">
@@ -78,16 +19,15 @@
         </div>
         <div class="system-name">INSTRUCTOR PORTAL</div>
     </div>
-    
     <div class="main-content">
+        <!-- USER INFO CARD -->
         <div class="profile-section">
             <div class="profile-pic">
                 <img src="../images/profile-placeholder.png" alt="PROFILE PIC">
             </div>
-            <div class="student-name">AMANI UPAO URI</div>
-            <div class="student-id">2023-02456</div>
-            
-            <div class="student-info">
+            <div class="user-name">AMANI UPAO URI</div>
+            <div class="user-id">2023-02456</div>
+            <div class="user-info">
                 <div class="info-item">
                     <div class="info-label">Email:</div>
                     <div class="info-value">WTF@GMAIL.COM</div>
@@ -101,7 +41,7 @@
                     <div class="info-value">INFORMATION TECHNOLOGY</div>
                 </div>
             </div>
-            
+            <!-- NAV -->
             <div class="side-nav">
                 <div class="nav-item active">
                     <a href="instructor-main.html">SECTIONS</a>
@@ -115,13 +55,11 @@
                 <div class="nav-item">
                     <a href="../login/i.login.html" class="logout-btn" onclick="return confirmLogout()">LOG OUT</a>
                 </div>
-            </div>
-            
+            </div> 
         </div>
-        
         <div class="schedule-section active">
-            
             <div class="schedule-table-container">
+                <!-- INSTRUCTOR SCHEDULE -->
                 <table class="schedule-table">
                     <thead>
                         <tr>
@@ -133,17 +71,14 @@
                         </tr>
                     </thead>
                     <tbody id="subject-list">
-                        <!-- Subject list will be populated dynamically -->
+                        <!-- EWAN KO NA TALAGA -->
                     </tbody>
                 </table>
-                
-                <!-- Empty state (shown when there are no subjects) -->
+                <!-- NO DATA -->
                 <div class="empty-state" id="empty-state">
                     <div class="empty-state-text">No data to be displayed...</div>
                 </div>
-
             </div>
-            
         </div>
     </div>
 

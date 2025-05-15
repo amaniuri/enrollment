@@ -5,22 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WMSU ADMIN PORTAL</title>
     <link rel="stylesheet" href="../css/Style.css">
-
-    <style>
-    .top-controls {
-        background: white;
-        padding: 20px;
-        border-radius: 5px;
-        box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-        margin-bottom: 20px;
-        display: flex;
-        flex-wrap: wrap;
-        gap: 15px;
-        align-items: center;
-        justify-content: space-between;
-    }
-    </style>
-
 </head>
 
 <body>
@@ -55,11 +39,11 @@
                     <a href="admin-main.html">DASHBOARD</a>
                 </div>
                 <p>MANAGE:</p>
-                <div class="nav-item active">
+                <div class="nav-item">
                     <a href="overviewStudent.html">USERS</a>
                 </div>
-                <div class="nav-item">
-                    <a href="overviewAcads.html">ACADS</a>
+                <div class="nav-item active">
+                    <a href="overviewCourse.html">ACADS</a>
                 </div>
                 <div class="nav-item">
                     <a href="#">GRADES</a>
@@ -71,23 +55,24 @@
         </div>
         <div class="content-section">
             <div class="tabs">
-                <div class="tab" data-tab="students"><a href="overviewStudent.html">STUDENTS</a></div>
-                <div class="tab" data-tab="instructors"><a href="overviewInstructor.html">INSTRUCTORS</a></div>
-                <div class="tab active" data-tab="admins"><a href="overviewAdmin.html">ADMINS</a> </div>
+                <div class="tab active" data-tab="courses"><a href="overviewCourse.html">COURSES</a></div>
+                <div class="tab" data-tab="sections"><a href="overviewSection.html">SECTIONS</a></div>
+                <div class="tab" data-tab="subjects"><a href="overviewSubject.html">SUBJECTS</a></div>
             </div>
             <div class="top-controls">
                 <div class="search-bar">
                     <input type="text" id="search-input" placeholder="SEARCH..." />
                 </div>
-                    <button class="addUser-btn" onclick="location.href='newUser.html'">+</button>
+                    <button class="addUser-btn" onclick="location.href='newAcad.html'">+</button>
             </div>
             <div class="enrollment-table-container">
                 <table class="enrollment-table">
                     <thead>
                         <tr>
-                            <th>ADMIN ID</th>
-                            <th>NAME</th>
-                            <th>EMAIL</th>
+                            <th>COURSE ID</th>
+                            <th>COURSE NAME</th>
+                            <th>COLLEGE</th>
+                            <th>TOTAL NUMBER OF STUDENTS</th>
                         </tr>
                     </thead>
                     <tbody id="student-list">
@@ -104,10 +89,10 @@
     
     <script>
     const students = [
-        { id: '2023-01234', name: 'JOHN DOE', email: 'JOHNDOE@WMSU.EDU.PH' },
-        { id: '2023-01235', name: 'JANE SMITH', email: 'JANESMITH@WMSU.EDU.PH' },
-        { id: '2023-01236', name: 'ROBERT JOHNSON', email: 'ROBERTJ@WMSU.EDU.PH' },
-        { id: '2023-01237', name: 'MARIA GARCIA', email: 'MARIAG@WMSU.EDU.PH' },
+        { id: '2023-01234', name: 'IT', college: 'CCS', totalStudents: '92' },
+        { id: '2023-01235', name: 'CS', college: 'CCS', totalStudents: '90' },
+        { id: '2023-01236', name: 'ME', college: 'COE', totalStudents: '120' },
+        { id: '2023-01237', name: 'HM', college: 'CHM', totalStudents: '107' },
     ];
 
     const studentList = document.getElementById('student-list');
@@ -123,24 +108,26 @@
             row.innerHTML = `
             <td>${student.id}</td>
             <td>${student.name}</td>
-            <td>${student.email}</td>
+            <td>${student.college}</td>
+            <td>${student.totalStudents}</td>
             `;
             studentList.appendChild(row);
         });
     }
 
     function searchStudents() {
-      const keyword = searchInput.value.toLowerCase();
-      const filtered = students.filter(student =>
+        const keyword = searchInput.value.toLowerCase();
+        const filtered = students.filter(student =>
         student.id.toLowerCase().includes(keyword) ||
         student.name.toLowerCase().includes(keyword) ||
-        student.email.toLowerCase().includes(keyword)
-      );
-      renderStudents(filtered);
+        student.college.toLowerCase().includes(keyword) ||
+        student.totalStudents.toLowerCase().includes(keyword)
+        );
+        renderStudents(filtered);
     }
-    
+
     searchInput.addEventListener('input', searchStudents);
-    
+
     renderStudents(students);
     </script>
  

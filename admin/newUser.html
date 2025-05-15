@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WMSU ADMIN PORTAL</title>
+    <link rel="stylesheet" href="../css/Style.css">
+
+    <style>
+    input,select {
+        width: 100%;
+        padding: 10px;
+        margin-top: 6px;
+        border-radius: 6px;
+        border: 1px solid #ccc;
+        font-size: 16px;
+    }
+
+    .student-only, .instructor-only {
+        display: none;
+    }
+    </style>
+    
+</head>
+
+<body>
+    <!-- HEADER -->
+    <div class="header">
+        <div class="logo">
+            <img src="../images/seal.jfif" alt="WMSU SEAL">
+            <div>
+                <div class="university-name">WESTERN MINDANAO STATE UNIVERSITY</div>
+                <div class="location">Zamboanga City</div>
+            </div>
+        </div>
+        <div class="system-name">ADMIN PORTAL</div>
+    </div>
+    <div class="main-content">
+        <!-- USER INFO CARD -->
+        <div class="profile-section">
+            <div class="profile-pic">
+                <img src="../images/profile-placeholder.png" alt="PROFILE PIC">
+            </div>
+            <div class="user-name">AMANI UPAO URI</div>
+            <div class="user-id">2023-02456</div>
+            <div class="user-info">
+                <div class="info-item">
+                    <div class="info-label">Email:</div>
+                    <div class="info-value">WTF@GMAIL.COM</div>
+                </div>
+            </div>
+            <!-- NAV -->
+            <div class="side-nav">
+                <div class="nav-item">
+                    <a href="admin-main.html">DASHBOARD</a>
+                </div>
+                <p>MANAGE:</p>
+                <div class="nav-item active">
+                    <a href="overviewStudent.html">USERS</a>
+                </div>
+                <div class="nav-item">
+                    <a href="overviewAcads.html">ACADS</a>
+                </div>
+                <div class="nav-item">
+                    <a href="#">GRADES</a>
+                </div>
+                <div class="nav-item">
+                    <a href="../login/i.login.html" class="logout-btn" onclick="return confirmLogout()">LOG OUT</a>
+                </div>
+            </div>
+        </div>
+        <div class="form-container">
+            <div class="form-wrapper">
+                <h1>Create Portal Account</h1>
+                <form id="userForm">
+                    <label for="userType">USER TYPE:</label>
+                    <select id="userType" name="userType" required>
+                        <option value="">SELECT TYPE</option>
+                        <option value="student">STUDENT</option>
+                        <option value="instructor">INSTRUCTOR</option>
+                        <option value="admin">ADMIN</option>
+                    </select>
+                    <label>ID:</label>
+                    <input type="text" name="idNumber" placeholder="ID" required class="shared-field"/>
+                    <label>FULL NAME:</label>
+                    <div style="display: flex; gap: 10px;">
+                        <input type="text" name="firstName" placeholder="F.N." required class="shared-field"/>
+                        <input type="text" name="middleName" placeholder="M.N." required class="shared-field"/>
+                        <input type="text" name="lastName" placeholder="L.N." required class="shared-field"/>
+                    </div>
+                    <label>EMAIL & PASSWORD:</label>
+                    <div style="display: flex; gap: 10px;">
+                        <input type="email" name="email" placeholder="EMAIL" required class="shared-field"/>
+                        <input type="password" name="password" placeholder="PASSWORD" required class="shared-field"/>
+                    </div>
+                    <div class="student-only instructor-only">
+                        <label for="college">COLLEGE:</label>
+                        <select id="college" name="college" required>
+                            <option value="">SELECT COLLEGE</option>
+                            <option value="computing studies">COLLEGE OF COMPUTING STUDIES</option>
+                            <option value="engineering">COLLEGE OF ENGINEERING</option>
+                            <option value="architecture">COLLEGE OF ARCHITECTURE</option>
+                        </select>
+                    </div>
+                    <div class="student-only">
+                        <label for="course">COURSE:</label>
+                        <select id="course" name="course">
+                            <option value="">SELECT COURSE</option>
+                            <option value="information technology">BS INFORMATION TECHNOLOGY</option>
+                            <option value="computing studies">BS COMPUTER SCIENCE</option>
+                            <option value="mechanical engineering">BS MECHANICAL ENGINEERING</option>
+                            <option value="electrical engineering">BS ELECTRICAL ENGINEERING</option>
+                        </select>
+                    </div>
+                    <div class="instructor-only">
+                        <label for="department">DEPARTMENT:</label>
+                        <select id="department" name="department">
+                            <option value="">SELECT DEPARTMENT</option>
+                        </select>
+                    </div>
+                    <div class="form-buttons">
+                        <button type="submit" class="submit-btn">Add</button>
+                        <button type="button" class="cancel-btn" onclick="confirmCancel()">Cancel</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        
+    <script src="../js/acadFormFilter.js"></script>
+    <script src="../js/logout.js"></script>
+    
+</body>
+</html>
