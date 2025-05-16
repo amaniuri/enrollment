@@ -5,6 +5,49 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WMSU Student Portal</title>
     <link rel="stylesheet" href="../css/Style.css">
+    <style>
+        .option-boxes {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            padding: 20px;
+            margin-top: 20px;
+        }
+
+        .option-link {
+            text-decoration: none;
+        }
+
+        .option-box {
+            background-color: #f4f4f4;
+            border: 2px solid #ccc;
+            border-radius: 12px;
+            width: 150px;
+            height: 100px;
+            position: relative;
+            transition: all 0.3s ease;
+            box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .option-box:hover {
+            background-color: #e6f0ff;
+            transform: translateY(-5px);
+            box-shadow: 4px 6px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .option-text {
+            position: absolute;
+            bottom: 10px;
+            width: 100%;
+            text-align: center;
+            font-weight: bold;
+            color: #000;
+        }
+    </style>
 </head>
 
 <body>
@@ -19,6 +62,7 @@
         </div>
         <div class="system-name">STUDENT PORTAL</div>
     </div>
+
     <div class="main-content">
         <!-- USER INFO CARD -->
         <div class="profile-section">
@@ -51,7 +95,7 @@
             </div>
             <!-- NAV -->
             <div class="side-nav">
-                <div class="nav-item active">
+                <div class="nav-item">
                     <a href="student-main.html">SCHEDULE</a>
                 </div>
                 <div class="nav-item">
@@ -60,56 +104,31 @@
                 <div class="nav-item">
                     <a href="../login/s.login.html" class="logout-btn" onclick="return confirmLogout()">LOG OUT</a>
                 </div>
-                <div class="nav-item">
+                <div class="nav-item active">
                     <a href="portfolio.html">PORTFOLIO</a>
                 </div>
             </div> 
         </div>
-        <div class="schedule-section active">
-            <!-- ADD SUBJECT & SECTION -->
-            <div class="addCtrl">
-                <button class="add-btn" onclick="openAddModal()">
-                    <span>+</span> ADD SUBJECT
-                </button>
-                <button class="add-btn" onclick="openAddModal()">
-                    <span>+</span> ADD SECTION
-                </button>
-            </div>
-            <div class="schedule-table-container">
-                <!-- STUDENT SCHEDULE -->
-                <table class="schedule-table">
-                    <thead>
-                        <tr>
-                            <th>SUBJECT ID</th>
-                            <th>DESCRIPTION</th>
-                            <th>UNITS</th>
-                            <th>SCHEDULE</th>
-                            <th>SECTION</th>
-                            <th>ACTIONS</th>
-                        </tr>
-                    </thead>
-                    <tbody id="subject-list">
-                        <!-- EWAN KO NA TALAGA -->
-                    </tbody>
-                </table>
-                <!-- NO DATA -->
-                <div class="empty-state" id="empty-state">
-                    <div class="empty-state-text">Nothing added yet. Click "ADD SECTIONS" or "ADD SUBJECTS" to get started.</div>
+
+        <div class="option-boxes">
+            <a href="../portfolio/URI_PORTFOLIO_BSIT2C.html" class="option-link">
+                <div class="option-box">
+                    <div class="option-text">URI, AMANI U.</div>
                 </div>
-                <!-- TOTAL UNITS TEXT -->
-                <div class="total-units">
-                    <div class="units-label">TOTAL UNITS:</div>
-                    <div class="units-value">0.00</div>
+            </a>
+            <a href="page2.html" class="option-link">
+                <div class="option-box">
+                    <div class="option-text">SALVADOR, MARK LUIS</div>
                 </div>
-                <!-- ENROLL BUTTON -->
-                <div class="enroll-btn-wrapper">
-                    <button class="enroll-btn" id="enroll-btn" onclick="enrollSubjects()">ENROLL</button>
+            </a>
+            <a href="page3.html" class="option-link">
+                <div class="option-box">
+                    <div class="option-text">DIONALDO, DANICA JEZZYLAN GAY M.</div>
                 </div>
-            </div>
+            </a>
         </div>
     </div>        
-    
+
     <script src="../js/logout.js"></script>
-    
 </body>
 </html>
