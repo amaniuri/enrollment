@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>IT225 Portfolio Project</title>
+    <link href="https://fonts.googleapis.com/css2?family=Parisienne&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Montserrat', sans-serif;
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            background-color: #fef2f0;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .section {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        #home {
+            padding-top: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        
+        #by-me, #more {
+            padding-top: 100px;
+        }
+        
+        .sticky-nav {
+            position: fixed;
+            top: 20px;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: center;
+            margin: 0 auto;
+        }
+        
+        .nav {
+            background-color: #f289b7;
+            padding: 10px 30px;
+            border-radius: 50px;
+            display: inline-block;
+            transition: all 0.3s ease;
+        }
+        
+        .nav.over-pink {
+            background-color: #f8eeee;
+        }
+        
+        .nav.over-pink a {
+            color: #f2599c;
+        }
+        
+        .nav.over-pink:hover {
+            background-color: white;
+            box-shadow: 0 4px 15px rgba(255, 255, 255, 0.7);
+        }
+        
+        .nav:hover {
+            background-color: #f2599c;
+            box-shadow: 0 4px 15px rgba(242, 89, 156, 0.6);
+        }
+
+        .nav a {
+            color: #ffffff;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .nav a:hover {
+            color: #f8eeee;
+            text-decoration: underline;
+        }
+        
+        .profile-section {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            text-align: center;
+            gap: 40px;
+            margin: 0;
+        }
+        
+        .image {
+            width: 350px;
+            height: 350px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 5px solid #f2599c;
+            flex-shrink: 0;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .image:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 20px rgba(242, 89, 156, 0.3);
+        }
+
+        .image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .profile-content {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .profile-name {
+            font-family: 'Parisienne', cursive;
+            font-size: 48px;
+            color: #f2599c;
+            margin-bottom: 10px;
+            font-weight: 600;
+            font-style: normal;
+        }
+        
+        .profile-description {
+            color: #f2599c;
+            line-height: 1.6;
+            margin-bottom: 30px;
+            font-size: 16px;
+            max-width: 100%;
+        }
+        
+        .resume-btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: transparent;
+            color: #f2599c;
+            border: 2px solid #f2599c;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .resume-btn:hover {
+            background-color: #f2599c;
+            color: white;
+        }
+        
+        .arrow {
+            margin-left: 10px;
+            font-size: 18px;
+        }
+        
+        .by-me-section {
+            background-color: #ff69b4;
+            padding: 40px 0;
+        }
+        
+        .section-title {
+            font-family: 'Parisienne', cursive;
+            font-size: 36px;
+            color: white;
+            text-align: center;
+            margin-bottom: 40px;
+            text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.1);
+        }
+        
+        .projects-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .project-card {
+            width: 60%;
+            background-color: #fef2f0;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            margin-bottom: 20px;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 20px rgba(0, 0, 0, 0.15);
+        }
+        
+        .project-image {
+            width: 100%;
+            height: 250px;
+            overflow: hidden;
+        }
+        
+        .project-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+               
+        .more-section {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 60px 0;
+            flex-wrap: wrap;
+        }
+        
+        .contact-content {
+            flex: 1;
+            min-width: 300px;
+            padding-right: 40px;
+        }
+        
+        .contact-title {
+            font-family: 'Parisienne', cursive;
+            font-size: 42px;
+            color: #f2599c;
+            margin-bottom: 20px;
+        }
+        
+        .contact-info {
+            color: #f2599c;
+            font-size: 18px;
+            line-height: 1.8;
+        }
+        
+        .contact-image {
+            width: 350px;
+            height: 350px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 5px solid #f2599c;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .contact-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .contact-image:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 20px rgba(242, 89, 156, 0.3);
+        }
+
+        @media (max-width: 768px) {
+            .profile-section,
+            .more-section {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+            
+            .image,
+            .contact-image {
+                margin-right: 0;
+                margin-bottom: 30px;
+            }
+            
+            .project-card {
+                width: 90%;
+            }
+            
+            .contact-content {
+                padding-right: 0;
+                text-align: center;
+                margin-bottom: 30px;
+            }
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="sticky-nav">
+        <div class="nav-container">
+            <div class="nav">
+                <a href="#home">Home</a>
+                <a href="#by-me">By me</a>
+                <a href="#more">More</a>
+            </div>
+        </div>
+    </div>
+    
+    <div id="home" class="section">
+        <div class="container">
+            <div class="profile-section">
+                <div class="image">
+                    <img src="thisIsMe.png" alt="Amani Upao Uri Profile Picture">
+                </div>
+                
+                <div class="profile-content">
+                    <h1 class="profile-name">Amani Upao Uri</h1>
+                    
+                    <p class="profile-description">
+                        A <em>REALLY</em> happy BS Information Technology student here at WMSU, Zamboanga City, Philippines! I'm very passionate about tech and all things creative. I enjoy doing creative projects because they align perfectly with my skills and interests— from designing visuals to turning them into a reality.
+                    </p>
+                    
+                    <a href="URI_RESUME_BSIT2C.html" class="resume-btn">
+                        VIEW RESUME <span class="arrow">→</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div id="by-me" class="section by-me-section">
+        <div class="container">
+            <h2 class="section-title">Here are some of my best works:</h2>
+            
+            <div class="projects-container">
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="work1.png" alt="Hello World">
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="work3.png" alt="Error Debugging">
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+    
+    <div id="more" class="section">
+        <div class="container">
+            <div class="more-section">
+                <div class="contact-content">
+                    <h2 class="contact-title">Let's work together!</h2>
+                    <div class="contact-info">
+                        <p>E-mail: amaniuri444@gmail.com</p>
+                        <p>Contact #: 091234678</p>
+                    </div>
+                </div>
+                
+                <div class="contact-image">
+                    <img src="contactMe.png" alt="BLEHHH">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.querySelectorAll('.nav a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                window.scrollTo({
+                    top: targetElement.offsetTop - 100,
+                    behavior: 'smooth'
+                });
+            });
+        });
+        
+        // Add scroll event listener to change nav color when over pink section
+        window.addEventListener('scroll', function() {
+            const byMeSection = document.querySelector('#by-me');
+            const nav = document.querySelector('.nav');
+            
+            // Get the top and bottom positions of the pink section
+            const byMeTop = byMeSection.offsetTop;
+            const byMeBottom = byMeTop + byMeSection.offsetHeight;
+            
+            // Get the current scroll position
+            const scrollPosition = window.scrollY + nav.offsetTop + nav.offsetHeight/2;
+            
+            // Check if the nav is over the pink section
+            if (scrollPosition >= byMeTop && scrollPosition <= byMeBottom) {
+                nav.classList.add('over-pink');
+            } else {
+                nav.classList.remove('over-pink');
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>IT225 Portfolio Project - Resume</title>
+    <link href="https://fonts.googleapis.com/css2?family=Parisienne&display=swap" rel="stylesheet">
+
+    <style> 
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        body {
+            background-color: #fef2f0;
+        }   
+
+        .header {
+            background-color: #ff69b4;
+            padding: 20px;
+            color: white;
+            position: relative;
+        }
+        
+        .back-btn {
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 40px;
+            color: white;
+            text-decoration: none;
+            font-weight: 300;
+        }
+        
+        .header-content {
+            text-align: center;
+        }
+        
+        .name {
+            font-family: 'Parisienne', cursive;
+            font-size: 36px;
+            color: white;
+            text-shadow: 2px 2px 3px rgba(0, 0, 0,.2);
+            margin-bottom: 5px;
+        }
+        
+        .title {
+            font-size: 20px;
+            font-weight: 500;
+        }
+        
+        .content {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 0 20px;
+        }
+        
+        .resume-section {
+            display: flex;
+            background-color: white;
+            border-radius: 15px;
+            overflow: hidden;
+            margin-bottom: 20px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .resume-section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
+        }
+        
+        .resume-image {
+            width: 120px;
+            height: 150px;
+            padding: 15px;
+            background-color: white;
+        }
+        
+        .resume-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+        
+        .resume-quote {
+            flex: 1;
+            padding: 25px 20px;
+            color: #ff69b4;
+            line-height: 1.5;
+        }
+        
+        .quote-text {
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+        
+        .hashtag {
+            font-weight: 600;
+        }
+        
+        .info-container {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .info-section {
+            flex: 1;
+            background-color: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .info-section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
+        }
+        
+        .section-title {
+            font-family: 'Parisienne', cursive;
+            color: #ff69b4;
+            font-size: 30px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .education-item {
+            margin-bottom: 20px;
+            color: #ff69b4;
+            transition: transform 0.2s ease;
+        }
+        
+        li:hover .education-item {
+            transform: translateX(5px);
+        }
+        
+        .education-item h3 {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+        
+        .education-date {
+            font-size: 15px;
+            font-style: italic;
+        }
+        
+        ul {
+            list-style-type: none;
+        }
+        
+        li {
+            position: relative;
+            padding-left: 20px;
+            margin-bottom: 15px;
+        }
+        
+        li::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: #ff69b4;
+            font-size: 20px;
+        }
+        
+        .skills-container {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        
+        .skill-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            transition: transform 0.2s ease;
+        }
+        
+        .skill-item:hover {
+            transform: translateX(5px);
+        }
+        
+        .skill-name {
+            color: #ff69b4;
+            font-size: 16px;
+            flex: 1;
+        }
+        
+        .skill-dots {
+            display: flex;
+            gap: 5px;
+        }
+        
+        .dot {
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            background-color: #ff69b4;
+        }
+        
+        .dot.empty {
+            background-color: #ddd;
+        }
+
+        @media (max-width: 768px) {
+            .info-container {
+                flex-direction: column;
+            }
+                    
+            .profile-section {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+                    
+            .resume-image {
+                width: 100px;
+                height: 120px;
+            }
+        }
+    </style>
+
+</head>
+
+<body>
+    <header class="header">
+        <a href="URI_PORTFOLIO_BSIT2C.html" class="back-btn">&#8249;</a>
+        <div class="header-content">
+            <h1 class="name">Amani Upao Uri</h1>
+            <p class="title">Frontend Developer</p>
+        </div>
+    </header>
+    
+    <div class="content">
+        <div class="resume-section">
+            <div class="resume-image">
+                <img src="ProfessionalMe.png">
+            </div>
+            <div class="resume-quote">
+                <p class="quote-text">"Studying in this course gives me the perfect blend of logic and imagination, and I'm always excited to learn, explore, and grow in this field. With technology constantly evolving, I love the challenge of keeping up while adding my own creative twist along the way. <span class="hashtag">#soreal</span>"</p>
+            </div>
+        </div>
+        
+        <div class="info-container">
+            <div class="info-section">
+                <h2 class="section-title">Education</h2>
+                <ul>
+                    <li>
+                        <div class="education-item">
+                            <h3>Western Mindanao State University</h3>
+                            <p class="education-date">2023 - Present</p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="education-item">
+                            <h3>Ateneo De Zamboanga Univeristy SHS</h3>
+                            <p class="education-date">2021 - 2023</p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="education-item">
+                            <h3>Modern International School</h3>
+                            <p class="education-date">2008 - 2021</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            
+            <div class="info-section">
+                <h2 class="section-title">Skills</h2>
+                <div class="skills-container">
+                    <div class="skill-item">
+                        <span class="skill-name">Creative Design:</span>
+                        <div class="skill-dots">
+                            <div class="dot"></div>
+                            <div class="dot"></div>
+                            <div class="dot"></div>
+                            <div class="dot"></div>
+                            <div class="dot"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-item">
+                        <span class="skill-name">HTML:</span>
+                        <div class="skill-dots">
+                            <div class="dot"></div>
+                            <div class="dot"></div>
+                            <div class="dot"></div>
+                            <div class="dot"></div>
+                            <div class="dot"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-item">
+                        <span class="skill-name">CSS:</span>
+                        <div class="skill-dots">
+                            <div class="dot"></div>
+                            <div class="dot"></div>
+                            <div class="dot"></div>
+                            <div class="dot"></div>
+                            <div class="dot empty"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-item">
+                        <span class="skill-name">JavaScript:</span>
+                        <div class="skill-dots">
+                            <div class="dot"></div>
+                            <div class="dot"></div>
+                            <div class="dot"></div>
+                            <div class="dot empty"></div>
+                            <div class="dot empty"></div>
+                        </div>
+                    </div>
+
+                    <div class="skill-item">
+                        <span class="skill-name">Magalit:</span>
+                        <div class="skill-dots">
+                            <div class="dot"></div>
+                            <div class="dot"></div>
+                            <div class="dot"></div>
+                            <div class="dot"></div>
+                            <div class="dot"></div>
+                        </div>
+                    </div>
+
+                    <div class="skill-item">
+                        <span class="skill-name">Mag Breakdown:</span>
+                        <div class="skill-dots">
+                            <div class="dot"></div>
+                            <div class="dot"></div>
+                            <div class="dot"></div>
+                            <div class="dot"></div>
+                            <div class="dot"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
